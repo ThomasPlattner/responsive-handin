@@ -1,0 +1,191 @@
+/* General styles */
+
+html {
+    font-size:20px;
+    box-sizing: border-box;
+}
+
+main {
+    margin:5vw 10vw;
+}
+
+footer {
+    position: relative;
+    bottom:0vw;
+    margin: 0 10vw 0 0;
+    text-align: right;
+}
+/* Typography */
+
+h1, 
+h2, 
+h3, 
+nav {
+    font-family: Montserrat;
+}
+
+p, 
+li, 
+a {
+    font-family: Lato;
+    font-size: 16px;
+}
+
+footer {
+    font-size: 0.25vw;
+}
+
+/* Header and Main Navigation */
+
+#blogname {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {       
+    font-weight: 500;
+    font-style: italic;
+    text-decoration: none;
+    margin-left: 0.5em;
+}
+
+
+h2 {
+    font-size: 1.5vw;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 1vw;
+}
+    
+nav {
+    border-bottom: solid grey 2px;
+    display:flex; /*define nav container as a flexbox */
+    gap:0.625%;
+    align-items:stretch;
+    margin: 0 10vw;
+}
+
+
+nav a{
+    text-decoration: none;
+    color:black;
+    font-size: 2vw;
+    font-weight: 200;
+    font-family: Montserrat;
+    border-radius: 30px;
+    width: 5%;
+    padding: 0.5vw;
+    margin: 1rem;
+    flex:auto;
+    text-align: center;
+}
+
+nav a:hover {
+    background: lightgrey;
+}
+
+/* Screen Sizes:
+    - default screen width for desktop: >992px
+    - screen size for tablet: 576-992px
+    - screen size for mobile: <576px -> no grid applies; posts are displayed vertically in default html format */
+
+@media screen and (min-width: 576px) {
+    h1 {
+       text-align: center;
+    }
+}  
+
+@media screen and (min-width: 992px) {
+    #article-overview {
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        column-gap: 3%;
+        row-gap: 5%;
+        column-count: 3;
+    }
+}
+
+
+@media screen and (min-width: 576px) and (max-width: 992px) {
+    #article-overview {
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        column-gap: 3%;
+        row-gap: 5%;
+        column-count: 3;
+    }
+}
+
+/* General main section formatting */
+
+/* Article Overview Formatting */
+
+
+.blog-posts {
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2;
+    width:100%;
+    margin: 0 0vw;
+}
+
+.blog-posts img {
+    width: 100%;
+}
+
+#article-overview a {
+    text-decoration: none;
+    color: black;
+}
+
+.post-description {
+    font-size: 1.15vw;
+    text-indent: 5%;
+}
+
+/* Article formatting */
+
+article.content {
+    padding: 0 20vw;
+    line-height: 1.5;
+}
+
+article.content p::first-line {
+    text-indent: 50px;
+}
+
+aside {
+    margin: 5vw 10vw 0 0;
+    position: fixed;
+    right:0vw;
+    background-color: lightgrey;
+    width: 18vw;
+    border-radius: 10px;
+}
+
+aside ul {
+    list-style: none;
+    line-height: 1.5;
+}
+
+aside ul a,
+aside ul a:visited {
+    text-decoration: none;
+    color: rgb(81, 81, 81);
+}
+
+aside ul a:hover {
+    text-decoration: underline;
+}
+
+
+/* contact page */
+
+#maps-embed {
+    width: 100%;
+    margin-top: 0.5vw;
+}

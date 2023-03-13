@@ -42,5 +42,5 @@ def blog(slug):
 def none(slug):
     message = "Sorry, the page about " + slug + " doesn't exist."
     return render_template('/base.html', message=message)
-
-app.run()
+if __name__ == '__main__':
+    app.run()

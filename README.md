@@ -11,3 +11,7 @@ It will contain:
     - map
 - short intro to the author
 - and the ability to filter the article based on different categories
+
+Techstack:
+- Frontend: HTML, CSS
+- Backend: Flask, jinja2

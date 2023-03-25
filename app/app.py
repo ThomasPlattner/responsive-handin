@@ -1,9 +1,9 @@
 from flask import Flask, redirect, url_for, render_template
-from model import article_list
+from .articles.routes import article_list
+from . import articles
 
 app = Flask(__name__)
 app.config.from_object('app.config')
-
 
 @app.route('/')
 def index():
@@ -26,20 +26,9 @@ def categories():
 def contact():
     return render_template('contact.html')
 
-@app.route('/blog/<slug>')
-def blog(slug):
-    articles = article_list
-    for article in article_list:
-        if slug.title() == article['title']:
-            url = slug.lower() + ".html"
-            return render_template(url)
-            break
-    else:
-        message = "Sorry, we couldn't find the article about " + slug + " :( "
-        return render_template('/base.html', message=message) 
-
 @app.route('/<slug>')
 def none(slug):
     message = "Sorry, the page about " + slug + " doesn't exist."
     return render_template('/base.html', message=message)
 
+app.register_blueprint(articles.routes.blueprint)

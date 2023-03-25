@@ -15,3 +15,20 @@ It will contain:
 Techstack:
 - Frontend: HTML, CSS
 - Backend: Flask, jinja2
+
+class Article():
+    id = 'integer'
+    author = 'string'
+    date = 'date'
+    content = 'text'
+    topic = 'string
+
+class Experience():
+    id = 'integer'
+    start_date = 'date'
+    end_date = 'date'
+    title = 'text'
+    description = 'text'
+    company = 'string'
+    company_url = 'string'
+    

@@ -2,7 +2,7 @@ from flask import Flask, redirect, url_for, render_template
 from model import article_list
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_object('app.config')
 
 
 @app.route('/')
@@ -42,5 +42,4 @@ def blog(slug):
 def none(slug):
     message = "Sorry, the page about " + slug + " doesn't exist."
     return render_template('/base.html', message=message)
-if __name__ == '__main__':
-    app.run()
+

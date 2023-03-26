@@ -1,12 +1,12 @@
 from flask import Blueprint, render_template, redirect, url_for
-from app.articles.routes import article_list
+from app.articles.models import Article
 
 blueprint = Blueprint('general_pages', __name__)
 
 @blueprint.route('/')
 def index():
-    articles = article_list
-    return render_template('general_pages/index.html', articles=articles)
+    all_articles = Article.query.all()
+    return render_template('general_pages/index.html', articles=all_articles)
 
 @blueprint.route('/about')
 def about():

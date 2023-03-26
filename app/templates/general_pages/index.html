@@ -5,9 +5,9 @@
         <h2>Latest Articles</h2>
         <div id="article-overview">
             {% for article in articles %}
-            <a class="blog-posts" href="../blog/{{ article['title'] | lower }}">
-                <img src="{{ url_for('static', filename='images/'+ article['image_name'] ) }}" alt="{{ article['alt'] }}"/>
-                <p class="post-description">{{ article['icon'] }} {{ article['title']}}</p>
+            <a class="blog-posts" href="../blog/{{ article.title | lower }}">
+                <img src="{{ url_for('static', filename='images/'+ article.image_name ) }}" alt="{{ article.image_alt }}"/>
+                <p class="post-description">{{ article.icon }} {{ article.title }}</p>
             </a>
             {% endfor %}  
     </section>

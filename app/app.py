@@ -1,6 +1,6 @@
 from flask import Flask, redirect, url_for, render_template
-from .articles.routes import article_list
-from . import articles, general_pages, users
+# from .articles.routes import articles
+from . import articles, general_pages
 from app.extensions.database import db, migrate
 
 def create_app():

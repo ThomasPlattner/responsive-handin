@@ -1,18 +1,18 @@
-from app.extensions.database import db
+from app.extensions.database import db, CRUDMixin
 from datetime import datetime
 
-# class ArticleCategory(db.Model):
+# class ArticleCategory(db.Model, CRUDMixin):
     # article_id = db.Column(db.Integer, db.ForeignKey('article.id'), primary_key=True)
     # category_id = db.Column(db.Integer, db.ForeignKey('category.id'), primary_key=True)
 
-class User(db.Model):
+class User(db.Model, CRUDMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String)
     password = db.Column(db.String)
     name = db.Column(db.String)
     # articles = db.relationship('Article', backref='user', lazy=True)
 
-class Article(db.Model):
+class Article(db.Model, CRUDMixin):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, unique=True)
     icon = db.Column(db.String)
@@ -25,7 +25,7 @@ class Article(db.Model):
     # article_categories = db.relationship('ArticleCategory', backref='article', lazy=True)
 
 
-class Category(db.Model):
+class Category(db.Model, CRUDMixin):
     id = db.Column(db.Integer, primary_key=True)
     categories = db.Column(db.String)
     # article_categories = db.relationship('ArticleCategory', backref='category', lazy=True)

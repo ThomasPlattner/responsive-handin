@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 db = SQLAlchemy()
 migrate = Migrate()
 
-class CRUDmixin():
+class CRUDMixin():
 
     def save(self):
         db.session.add(self)

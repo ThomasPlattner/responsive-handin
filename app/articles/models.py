@@ -2,7 +2,7 @@ from app.extensions.database import db, CRUDMixin
 from datetime import datetime
 
 class ArticleCategory(db.Model, CRUDMixin):
-    __tablename__ = "article_category"
+    __tablename__ = 'article_category'
     article_id = db.Column(db.Integer, db.ForeignKey('article.id', name='fk_article_id'), primary_key=True)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id', name='fk_category_id'), primary_key=True)
 

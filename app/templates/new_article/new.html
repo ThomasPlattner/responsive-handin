@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h2>Write a new Article</h2>
+
+    <form method="POST">
+        <!-- <div>
+            <label for="user_id">Full Name</label>
+            <input type="text" name="user_id" id="user_id" placeholder="Thomas Plattner">
+        </div> -->
+        <div>
+            <label for="icon">Icon</label>
+            <input type="text" name="icon" id="icon">
+        </div>
+        <!-- <div>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title">
+        </div>
+        <div>
+            <label for="text">Text</label>
+            <input type="text" name="text" id="text">
+        </div> -->
+        <!-- <div>
+            <label for="image_name">Image name</label>
+            <input type="" name="image_name" id="image_name">
+        </div> ALSO: HOW TO UPLOAD IMAGE???-->
+        <!-- <div>
+            <label for="image_alt">Image alternative description</label>
+            <input type="text" name="image_alt" id="image_alt">
+        </div>
+        <div>Select Categories
+            <ul>
+            {% for category in categories %}
+                <li>
+                    <label for="categories_{{ category.id }}">{{ category.categories }}</label>
+                    <input type="checkbox>" name="{{ category.slug }}" id="categories_{{ category.id}}">
+                </li>
+            {% endfor %}
+            </ul>
+        </div> -->
+        <!-- <div>
+            <label for="new_categories">Add new Category</label>
+            <input type="text" name="new_categories" id="new_categories">
+        </div> -->
+        <input type="submit" value="Post Article">
+    </form>
+{% endblock %}

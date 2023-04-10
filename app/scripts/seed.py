@@ -1,5 +1,5 @@
 from app.app import create_app
-from app.articles.models import Article
+from app.articles.models import Article, Category, User
 from app.extensions.database import db
 
 if __name__ == '__main__':
@@ -13,8 +13,28 @@ article_list = [
     {'title': 'Bikes', 'icon': '🚲','image_name': 'bike.jpg', 'alt': 'Bicycle standing against a wall'},
     ]
 
-for post in article_list:
-    new_article = Article(title=post['title'], icon=post['icon'], image_name=post['image_name'], image_alt=post['alt'])
-    db.session.add(new_article)
+user_list = [
+    {'name': 'Thomas Plattner'},
+    ]
+
+category_list = [
+    'Motor',
+    '4 wheels',
+    '>4 wheels',
+    'flying',
+    '2 wheels',
+]
+
+# for post in article_list:
+#     new_article = Article(title=post['title'], icon=post['icon'], image_name=post['image_name'], image_alt=post['alt'])
+#     db.session.add(new_article)
+
+for person in user_list:
+    new_user = User(name=person['name'])
+    db.session.add(new_user)
+
+for category in category_list:
+    new_category = Category(categories=category)
+    db.session.add(new_category)
 
 db.session.commit()

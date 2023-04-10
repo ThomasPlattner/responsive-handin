@@ -1,6 +1,5 @@
 from flask import Flask, redirect, url_for, render_template
-# from .articles.routes import articles
-from . import articles, general_pages
+from . import articles, general_pages, new_article
 from app.extensions.database import db, migrate
 
 def create_app():
@@ -16,6 +15,7 @@ def create_app():
 def register_blueprints(app: Flask):
     app.register_blueprint(articles.routes.blueprint)
     app.register_blueprint(general_pages.routes.blueprint)
+    app.register_blueprint(new_article.routes.blueprint)
 
 # Database
 def register_extensions(app: Flask):

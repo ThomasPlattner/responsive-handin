@@ -1,12 +1,13 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, request, current_app
 from app.articles.models import Article
 
 blueprint = Blueprint('general_pages', __name__)
 
 @blueprint.route('/')
 def index():
-    all_articles = Article.query.all()
-    return render_template('general_pages/index.html', articles=all_articles)
+    page_number = request.args.get('page', 1, type=int)
+    articles_pagination = Article.query.paginate(page=page_number, per_page=current_app.config['ARTICLES_PER_PAGE'])
+    return render_template('general_pages/index.html', articles_pagination=articles_pagination)
 
 @blueprint.route('/about')
 def about():

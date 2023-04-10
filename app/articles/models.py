@@ -34,3 +34,8 @@ class Category(db.Model, CRUDMixin):
     categories = db.Column(db.String)
     article_categories = db.relationship('ArticleCategory', backref='category', lazy=True)
 
+# class Headings(db.Model, CRUDMixin):
+#     __tablename__ = 'category'
+#     id = db.Column(db.Integer, primary_key=True)
+#     heading = db.Column(db.String)
+#     article_is = db.Column

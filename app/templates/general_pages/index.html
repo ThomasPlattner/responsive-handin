@@ -4,11 +4,25 @@
     <section class="content">
         <h2>Latest Articles</h2>
         <div id="article-overview">
-            {% for article in articles %}
+            {% for article in articles_pagination.items %}
             <a class="blog-posts" href="../blog/{{ article.title | lower }}">
                 <img src="{{ url_for('static', filename='images/'+ article.image_name ) }}" alt="{{ article.image_alt }}"/>
                 <p class="post-description">{{ article.icon }} {{ article.title }}</p>
             </a>
             {% endfor %}
     </section>
+
+    <nav>
+        {% if articles_pagination.prev_num %}
+            <a href="{{ url_for('general_pages.index', page=articles_pagination.prev_num) }}" alt="Go to previous page">Previous Page</a>
+        {% endif %}
+
+        {% if articles_pagination.prev_num and articles_pagination.next_num %}
+            <span> - </span>
+        {% endif %}
+        
+        {% if articles_pagination.next_num %}
+            <a href="{{ url_for('general_pages.index', page=articles_pagination.next_num) }}" alt="Go to next page">Next Page</a>
+        {% endif %}
+    </nav>
 {% endblock %}

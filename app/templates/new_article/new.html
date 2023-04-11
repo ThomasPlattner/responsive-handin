@@ -4,31 +4,37 @@
     <h2>Write a new Article</h2>
 
     <form method="POST">
-        <!-- <div>
-            <label for="user_id">Full Name</label>
-            <input type="text" name="user_id" id="user_id" placeholder="Thomas Plattner">
-        </div> -->
+        <div>
+            <label for="user">Author</label>
+            <select id="user" name="user" multiple>
+                <!-- {% for user in users %}
+                    <option value="{{ user.id }}">{{ user.name }}</option>
+                {% endfor %} -->
+                <option value=1>Thomas Plattner</option>
+                <option value=2>Anonymous</option>
+            </select>
+        </div>
         <div>
             <label for="icon">Icon</label>
             <input type="text" name="icon" id="icon">
         </div>
-        <!-- <div>
+        <div>
             <label for="title">Title</label>
             <input type="text" name="title" id="title">
         </div>
         <div>
             <label for="text">Text</label>
             <input type="text" name="text" id="text">
-        </div> -->
+        </div>
         <!-- <div>
             <label for="image_name">Image name</label>
             <input type="" name="image_name" id="image_name">
-        </div> ALSO: HOW TO UPLOAD IMAGE???-->
-        <!-- <div>
+        </div> ALSO: HOW TO UPLOAD IMAGE???
+        <div>
             <label for="image_alt">Image alternative description</label>
             <input type="text" name="image_alt" id="image_alt">
-        </div>
-        <div>Select Categories
+        </div> -->
+        <!-- <div>Select Categories
             <ul>
             {% for category in categories %}
                 <li>
@@ -36,12 +42,16 @@
                     <input type="checkbox>" name="{{ category.slug }}" id="categories_{{ category.id}}">
                 </li>
             {% endfor %}
-            </ul>
-        </div> -->
-        <!-- <div>
-            <label for="new_categories">Add new Category</label>
-            <input type="text" name="new_categories" id="new_categories">
-        </div> -->
+            </ul> -->
+        <div>
+            <label for="categories">Categories</label>
+            <select id="categories" name="categories" multiple>
+                {% for category in categories %}
+                    <option value="{{ category.categories }}">{{ category.categories }}</option>
+                {% endfor %}
+            </select>
+            <p><em>Hold Ctrl (Windows) / Command (Mac) / Shift to select several categories</em></p>
+        </div>
         <input type="submit" value="Post Article">
     </form>
 {% endblock %}

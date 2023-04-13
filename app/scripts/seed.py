@@ -30,12 +30,12 @@ for post in article_list:
     new_article = Article(title=post['title'], icon=post['icon'], image_name=post['image_name'], image_alt=post['image_alt'], user_id=post['user_id'], text=post['text'])
     db.session.add(new_article)
 
-# for person in user_list:
-#     new_user = User(name=person['name'])
-#     db.session.add(new_user)
+for person in user_list:
+    new_user = User(name=person['name'])
+    db.session.add(new_user)
 
-# for category in category_list:
-#     new_category = Category(categories=category)
-#     db.session.add(new_category)
+for category in category_list:
+    new_category = Category(categories=category)
+    db.session.add(new_category)
 
 db.session.commit()

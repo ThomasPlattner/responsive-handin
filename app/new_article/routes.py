@@ -62,15 +62,15 @@ def post_new_category():
     category.save()
     return render_template('new_article/new_category.html')
 
-@blueprint.get('/new-user')
-def get_new_user():
-    return render_template('new_article/new_user.html')
+# @blueprint.get('/new-user')
+# def get_new_user():
+#     return render_template('new_article/new_user.html')
 
-@blueprint.post('/new-user')
-def post_new_user():
-    # create a new user
-    user = User(
-        name = request.form['new_user'],
-    )
-    user.save()
-    return render_template('new_article/new_user.html')
+# @blueprint.post('/new-user')
+# def post_new_user():
+#     # create a new user
+#     user = User(
+#         name = request.form['new_user'],
+#     )
+#     user.save()
+#     return render_template('new_article/new_user.html')

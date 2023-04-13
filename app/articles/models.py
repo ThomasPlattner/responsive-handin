@@ -20,10 +20,10 @@ class Article(db.Model, CRUDMixin):
     title = db.Column(db.String, unique=True)
     icon = db.Column(db.String)
     text = db.Column(db.Text)
-    date = db.Column(db.Date, default=datetime.utcnow)
-    image_url = db.Column(db.String)
-    image_name = db.Column(db.String)
-    image_alt = db.Column(db.String)
+    date = db.Column(db.Date, default=datetime.utcnow) #update to precise time
+    image_url = db.Column(db.String) #always the same -> needed? instead put into code
+    image_name = db.Column(db.String)  #needed? How does naming work?
+    image_alt = db.Column(db.String) 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', name='fk_user_id'))
     article_categories = db.relationship('ArticleCategory', backref='article', lazy=True)
 

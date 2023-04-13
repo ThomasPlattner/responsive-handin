@@ -19,7 +19,7 @@ class Article(db.Model, CRUDMixin):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), unique=True)
     icon = db.Column(db.String(30))
-    text = db.Column(db.Text(20000))
+    text = db.Column(db.String(20000))
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     image_name = db.Column(db.String(30))  #needed? How does naming work?
     image_alt = db.Column(db.String(80)) 

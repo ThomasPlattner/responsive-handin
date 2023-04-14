@@ -6,7 +6,7 @@
         <div id="article-overview">
             {% for article in articles_pagination.items %}
             <a class="blog-posts" href="../blog/{{ article.title | lower }}">
-                <img src="{{ url_for('static', filename='images/'+ article.image_name ) }}" alt="{{ article.image_alt }}"/>
+                <img src="{{ url_for('static', filename='images/upload/'+ article.image_name ) }}" alt="{{ article.image_alt }}"/>
                 <p class="post-description">{{ article.icon }} {{ article.title }}</p>
             </a>
             {% endfor %}

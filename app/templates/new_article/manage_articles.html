@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h2>Manage Articles</h2>
+    <a href="{{ url_for('new_article.get_article') }}" alt="button leading to page for writing a new article"><button type="button">📄 Write new Article</button></a>
+    <ul>
+        {% for article in articles %}
+        <li>
+            <p class="manager_article_name">{{ article.icon }} {{ article.title }}</p>
+            <a href="{{ url_for('new_article.get_article') }}" alt="button leading to page for editing an article"><button type="button">🖍️ Edit</button></a>
+            <button type="button" onclick="return confirm('Are you sure?')">🗑️ Delete</button>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

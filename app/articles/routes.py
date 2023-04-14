@@ -21,8 +21,9 @@ def blog(slug):
     for article in blogs:
         if slug.title() == article.title:
             text = article.text
+            print(text)
             return render_template('articles/article_template.html', text=text)
             break
-        else:
-            message = "Sorry, we couldn't find the article about " + slug + " :( "
-            return render_template('/base.html', message=message)
+    else:
+        message = "Sorry, we couldn't find the article about " + slug + " :( "
+        return render_template('/base.html', message=message)

@@ -13,7 +13,13 @@ The main parts are articles. For test purposes, there are four placeholder artic
 - Planes
 - Bikes
 
-The articles were hardcoded until now and will transition into the database and rendered from there next week. Further articles will be added to the database through HTML forms.
+The articles were hardcoded until now and are now rendered from the database. More articles including images can be added through a form here: '/new'
+ -> REMARK: The form post works locally using gunicorn run:app, but not deployed on the web yet. I will fix this bug as soon as possible.
+
+Right now, I did not add styles to the html form.
+
+I did not manage to add a delete and edit function for the articles, but prepared the UI already. For editing articles, I will use the same form as for creating articles, but with the article database entries as default values.
+For deleting articles, I will call the delete function in the manage section
 
 ## Technologies used:
 1. **Frontend**
@@ -25,7 +31,8 @@ The articles were hardcoded until now and will transition into the database and 
     - jinja2 Templates
 
 3. **Database**
-    - SQLite/SQLAlchemy
+    - SQLite/SQLAlchemy locally
+    - PostgreSQL for deployment
         
         Models: 
         - User (admin and author of articles)
@@ -58,10 +65,23 @@ The articles were hardcoded until now and will transition into the database and 
 0. Run tests:
     pytest -v
 
+## Changelog
+- Articles stored in database and rendered with HTML templates
+- Articles created through HTML forms
+- ability to add categories: '/new-category'
+- '/manage' interface: ability to create, update, delete articles
+    - create: link to '/new'
+    - update: coming soon, see "Upcoming features"
+    - delete: coming soon, see "Upcoming features"
+
+
 ## Upcoming features
 - contact form
 - Intro to the author in /about
 - more media queries for articles and other sites
 - Categories of articles (placeholders for development purposes; e.g., vehicles, 2 wheels, 4 wheels, >4 wheels, ...)
-- Articles created through HTML forms
-- Articles stored in database and rendered with HTML templates
+- update articles: same form as when creating, but filled with existing database entries as default
+- delete article: call delete function 
+- authentication
+- refactoring and more tests
+- secure file upload in html form

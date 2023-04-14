@@ -14,7 +14,6 @@ The main parts are articles. For test purposes, there are four placeholder artic
 - Bikes
 
 The articles were hardcoded until now and are now rendered from the database. More articles including images can be added through a form here: '/new'
- -> REMARK: The form post works locally using gunicorn run:app, but not deployed on the web yet. I will fix this bug as soon as possible.
 
 Right now, I did not add styles to the html form.
 

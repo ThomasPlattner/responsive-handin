@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect
 from app.articles.models import Category, Article, User, ArticleCategory
+from app.extensions.database import db
 import os.path
 from werkzeug.utils import secure_filename
 
@@ -11,12 +12,23 @@ def get_manage():
      return render_template('new_article/manage_articles.html', articles=articles)
 
 # @blueprint.post('/manage')
-# def post_manage(mid):
+# def delete_article(article_id):
+#     delete = Article.query.filter_by(id=article_id).first()
+#     if delete:
+#          db.session.delete()
 #     articles = Article.query.all()
-#     article_delete = Article.query.filter_by(id=mid).first()
-#     if article_delete:
-#     mid.delete()
-#     return render_template('new_article/manage_articles.html', articles=articles)
+#     article_delete = Article.query.get_or_404(article_id)
+#     article_delete.delete()
+#     return 
+
+
+@blueprint.post('/manage')
+def delete_article(article_id):
+    articles = Article.query.all()
+    article_delete = Article.query.get_or_404(article_id)
+    db.session.delete(article_delete)
+    db.session.commit()
+    return render_template('new_article/manage_articles.html', articles=articles)
 
 @blueprint.get('/new')
 def get_article():

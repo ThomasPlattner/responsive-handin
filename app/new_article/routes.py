@@ -10,6 +10,14 @@ def get_manage():
      articles = Article.query.all()
      return render_template('new_article/manage_articles.html', articles=articles)
 
+# @blueprint.post('/manage')
+# def post_manage(mid):
+#     articles = Article.query.all()
+#     article_delete = Article.query.filter_by(id=mid).first()
+#     if article_delete:
+#     mid.delete()
+#     return render_template('new_article/manage_articles.html', articles=articles)
+
 @blueprint.get('/new')
 def get_article():
     categories = Category.query.all()

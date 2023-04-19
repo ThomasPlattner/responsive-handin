@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block main %}
-    <h2>Write a new Article</h2>
+    <h2>Edit Article: {{ title }}</h2>
 
     <form method="POST" enctype="multipart/form-data" action="/new">
         <div>

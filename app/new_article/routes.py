@@ -23,6 +23,16 @@ def delete_article(article_id):
 
     return redirect(url_for('new_article.get_manage'))
 
+# @blueprint.get('/edit/<int:article_id>')
+# @login_required
+# def get_edit_article(article_id):
+#     article = Article.query.get_or_404(article_id)
+#     return render_template('new_article/edit_article.html', article=article)
+
+# @blueprint.post('edit/<int:article_id>')
+# @login_required
+# def post_edit_article(article_id):
+
 @blueprint.get('/new')
 @login_required
 def get_article():

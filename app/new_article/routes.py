@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, url_for
 from app.articles.models import Category, Article, ArticleCategory
 from app.users.models import User
 from app.extensions.database import db
@@ -11,28 +11,17 @@ blueprint = Blueprint('new_article', __name__)
 @blueprint.get('/manage')
 @login_required
 def get_manage():
-     articles = Article.query.all()
-     return render_template('new_article/manage_articles.html', articles=articles)
+    articles = Article.query.all()
+    return render_template('new_article/manage_articles.html', articles=articles)
 
-# @blueprint.post('/manage')
-# def delete_article(article_id):
-#     delete = Article.query.filter_by(id=article_id).first()
-#     if delete:
-#          db.session.delete()
-#     articles = Article.query.all()
-#     article_delete = Article.query.get_or_404(article_id)
-#     article_delete.delete()
-#     return 
-
-
-@blueprint.post('/manage')
+@blueprint.post('/manage/<int:article_id>')
 @login_required
 def delete_article(article_id):
     articles = Article.query.all()
-    article_delete = Article.query.get_or_404(article_id)
-    db.session.delete(article_delete)
-    db.session.commit()
-    return render_template('new_article/manage_articles.html', articles=articles)
+    article = Article.query.get_or_404(article_id)
+    article.delete()
+
+    return redirect(url_for('new_article.get_manage'))
 
 @blueprint.get('/new')
 @login_required
@@ -44,20 +33,17 @@ def get_article():
 @login_required
 def post_article():
     categories = Category.query.all()
-    users = User.query.all()
 
     if not all([
         request.form['title'],
         request.form['icon'],
         request.form['text'],
-        request.form['user_id'],
         request.files['article_image'],
         request.form['image_name'],
         request.form['image_alt'],
         ]):
             return render_template('new_article/new.html',
                 categories=categories,
-                users=users,
                 error='Please fill out all fields to post your article'
                 )
     
@@ -66,7 +52,6 @@ def post_article():
         title = request.form['title'],
         icon = request.form['icon'],
         text = request.form['text'],
-        user_id = request.form['user_id'],
         image_name = request.form['image_name'],
         image_alt = request.form['image_alt'],
     )
@@ -93,7 +78,7 @@ def post_article():
         )
         article_category.save()
 
-    return render_template('new_article/new.html', categories=categories, users=users)
+    return redirect(url_for('general_pages.index'))
 
 @blueprint.get('/new-category')
 @login_required

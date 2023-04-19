@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, request, current_app
+from flask import Blueprint, render_template, redirect, request, current_app, url_for
 from app.articles.models import Article
 
 blueprint = Blueprint('general_pages', __name__)
@@ -15,7 +15,7 @@ def about():
 
 @blueprint.route('/about-me')
 def about_me():
-    return redirect('/about')
+    return redirect(url_for('about'))
 
 @blueprint.route('/categories')
 def categories():

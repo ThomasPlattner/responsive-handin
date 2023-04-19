@@ -5,7 +5,7 @@
     <a href="{{ url_for('new_article.get_article') }}" alt="button leading to page for writing a new article"><button type="button">📄 Write new Article</button></a>
     {% for article in articles %}
         <p class="manager_article_name">{{ article.icon }} {{ article.title }}</p>
-        <!-- <a href="{{ url_for('new_article.edit_article', article_id=article.id) }}" alt="button leading to page for editing an article">
+        <!-- <a href="" alt="button leading to page for editing an article">
             <button type="button" >🖍️ Edit</button> -->
         </a>
         <form action="{{ url_for('new_article.delete_article', article_id=article.id) }}" method="POST" onsubmit="return confirm('Are you sure?')" alt="Button for deleting this article">

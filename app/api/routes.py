@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from .services.serialize_articles import serialize_articles, serialize_users, serialize_article_categories, serialize_categories
-from ..articles.models import Article, User, Category, ArticleCategory
+from ..articles.models import Article, Category, ArticleCategory
+from ..users.models import User
 from os import environ
 
 blueprint = Blueprint('api', __name__)

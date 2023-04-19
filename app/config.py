@@ -5,7 +5,9 @@ load_dotenv()
 
 SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URL')
 
-ARTICLES_PER_PAGE = 4
+ARTICLES_PER_PAGE = 6
+
+SECRET_KEY = environ.get('SECRET_KEY')
 
 # UPLOADS_FOLDER = 'static/images/upload'
 

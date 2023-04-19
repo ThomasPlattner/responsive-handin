@@ -1,12 +1,15 @@
 from flask import Blueprint, render_template, request, redirect
-from app.articles.models import Category, Article, User, ArticleCategory
+from app.articles.models import Category, Article, ArticleCategory
+from app.users.models import User
 from app.extensions.database import db
 import os.path
 from werkzeug.utils import secure_filename
+from flask_login import login_required
 
 blueprint = Blueprint('new_article', __name__)
 
 @blueprint.get('/manage')
+@login_required
 def get_manage():
      articles = Article.query.all()
      return render_template('new_article/manage_articles.html', articles=articles)
@@ -23,6 +26,7 @@ def get_manage():
 
 
 @blueprint.post('/manage')
+@login_required
 def delete_article(article_id):
     articles = Article.query.all()
     article_delete = Article.query.get_or_404(article_id)
@@ -31,11 +35,13 @@ def delete_article(article_id):
     return render_template('new_article/manage_articles.html', articles=articles)
 
 @blueprint.get('/new')
+@login_required
 def get_article():
     categories = Category.query.all()
     return render_template('new_article/new.html', categories=categories)
 
 @blueprint.post('/new')
+@login_required
 def post_article():
     categories = Category.query.all()
     users = User.query.all()
@@ -90,10 +96,12 @@ def post_article():
     return render_template('new_article/new.html', categories=categories, users=users)
 
 @blueprint.get('/new-category')
+@login_required
 def get_new_category():
     return render_template('new_article/new_category.html')
 
 @blueprint.post('/new-category')
+@login_required
 def post_new_category():
     # create a new category
     category = Category(
@@ -101,16 +109,3 @@ def post_new_category():
     )
     category.save()
     return render_template('new_article/new_category.html')
-
-# @blueprint.get('/new-user')
-# def get_new_user():
-#     return render_template('new_article/new_user.html')
-
-# @blueprint.post('/new-user')
-# def post_new_user():
-#     # create a new user
-#     user = User(
-#         name = request.form['new_user'],
-#     )
-#     user.save()
-#     return render_template('new_article/new_user.html')

@@ -38,7 +38,7 @@ def login():
         return render_template('users/login.html', error='The password is not correct')
 
     login_user(user)
-    return redirect(url_for('new_article.get_manage'))
+    return redirect(url_for('general_pages.index'))
 
     # try:
     #     user = User.query.filter_by(email=request.form.get('email')).first()

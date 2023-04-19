@@ -17,7 +17,6 @@ def get_manage():
 @blueprint.post('/manage/<int:article_id>')
 @login_required
 def delete_article(article_id):
-    articles = Article.query.all()
     article = Article.query.get_or_404(article_id)
     article.delete()
 

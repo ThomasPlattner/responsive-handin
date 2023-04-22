@@ -3,37 +3,50 @@
 {% block main %}
     <h2>Write a new Article</h2>
 
-    <form method="POST" enctype="multipart/form-data" action="/new">
+    {% if article %}
+        <form method="POST" enctype="multipart/form-data" action="{{ url_for('new_article.edit_article', article_id=article.id) }}">
+    {% elif new_article %}
+        <form method="POST" enctype="multipart/form-data" action="{{ url_for('new_article.post_article') }}">
+    {% endif %}
+        {% if article %}
+            <input type="hidden" name="article_id" value="{% if article %}{{ article_id }}{% endif %}">
+        {% endif %}
         <div>
             <label for="icon">Icon</label>
-            <input type="text" name="icon" id="icon" maxlength="30">
+            <input type="text" name="icon" id="icon" maxlength="30" value="{% if article %}{{ article.icon }}{% endif %}">
         </div>
         <div>
             <label for="title">Title</label>
-            <input type="text" name="title" id="title" maxlength="80">
+            <input type="text" name="title" id="title" maxlength="80" value="{% if article %}{{ article.title }}{% endif %}">
         </div>
         <div>
             <label for="text">Text</label>
-            <input type="text" name="text" id="text" maxlength="20000">
+            <!-- <textarea name="text" id="text" maxlength="20000" rows="20" cols="40" value="{% if article %}{{ article.text }}{% endif %}"></textarea> -->
+            <input type="text" name="text" id="text" maxlength="20000" value="{% if article %}{{ article.text }}{% endif %}">
         </div>
-        <h3>Categories</h3>
+        <!-- <h3>Categories</h3>
         <div>
             {% for category in categories %}
                 <label for="{{ category.id }}">{{ category.categories}}</label>
-                <input type="checkbox" id="{{ category.id }}" name="{{ category.id }}" value="{{ category.id }}"><br>
-            {% endfor %}
+                <input type="checkbox" id="{{ category.id }}" name="{{ category.id }}" value="{{ category.id }}"
+                    {% if article and category in article.categories %}
+                        checked 
+                    {% endif %}><br>
+                {% endfor %}
         </div>
+        <fieldset> -->
         <h3>Title image</h3>
-        <div>
-            <input type="file" id="article_image" name="article_image" accept=".png, .jpg, .jpeg, .gif, .svg" max-file-size="5242880">
-        <div>
+        <!-- <div>
+            <input type="file" id="article_image" name="article_image" accept=".png, .jpg, .jpeg, .gif, .svg" max-file-size="5242880"> How to display image for updating article?
+        <div> -->
             <label for="image_name">Image name</label>
-            <input type="" name="image_name" id="image_name" maxlength="30">
+            <input type="" name="image_name" id="image_name" maxlength="30" value="{% if article %}{{ article.image_name }}{% endif %}">
         </div>
         <div>
             <label for="image_alt">Image alternative description</label>
-            <input type="text" name="image_alt" id="image_alt" maxlength="80">
+            <input type="text" name="image_alt" id="image_alt" maxlength="80" value="{% if article %}{{ article.image_alt }}{% endif %}">
         </div>
+        </fieldset>
         <input type="submit" value="Post Article">
     </form>
 

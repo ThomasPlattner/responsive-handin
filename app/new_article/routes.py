@@ -22,21 +22,12 @@ def delete_article(article_id):
 
     return redirect(url_for('new_article.get_manage'))
 
-# @blueprint.get('/edit/<int:article_id>')
-# @login_required
-# def get_edit_article(article_id):
-#     article = Article.query.get_or_404(article_id)
-#     return render_template('new_article/edit_article.html', article=article)
-
-# @blueprint.post('edit/<int:article_id>')
-# @login_required
-# def post_edit_article(article_id):
-
 @blueprint.get('/new')
 @login_required
 def get_article():
     categories = Category.query.all()
-    return render_template('new_article/new.html', categories=categories)
+    new_article = Article.query.all()
+    return render_template('new_article/new.html', categories=categories, new_article=new_article)
 
 @blueprint.post('/new')
 @login_required
@@ -47,7 +38,7 @@ def post_article():
         request.form['title'],
         request.form['icon'],
         request.form['text'],
-        request.files['article_image'],
+        # request.files['article_image'],
         request.form['image_name'],
         request.form['image_alt'],
         ]):
@@ -64,12 +55,13 @@ def post_article():
         image_name = request.form['image_name'],
         image_alt = request.form['image_alt'],
     )
+
     article.save()
 
-    # save the article image
-    uploaded_file = request.files['article_image']
-    filename = secure_filename(uploaded_file.filename)
-    uploaded_file.save('app/static/images/upload/' + filename)
+    # # save the article image
+    # uploaded_file = request.files['article_image']
+    # filename = secure_filename(uploaded_file.filename)
+    # uploaded_file.save('app/static/images/upload/' + filename)
 
     # uploaded_file=request.files['article_image']
     # if uploaded_file.filename != '':
@@ -79,15 +71,72 @@ def post_article():
     #     uploaded_file.save(os.path.join(app.config[UPLOAD_PATH], filename))
 
     # create rows in connector table for each article-category combination
-    selected_categories = request.form.getlist('categories')
-    for item in selected_categories:
-        article_category = ArticleCategory(
-            article_id = article.id,
-            category_id = item,
-        )
-        article_category.save()
+    # selected_categories = request.form.getlist('categories')
+    # for item in selected_categories:
+    #     article_category = ArticleCategory(
+    #         article_id = article.id,
+    #         category_id = item,
+    #     )
+    #     article_category.save()
 
     return redirect(url_for('general_pages.index'))
+
+@blueprint.get('/edit/<int:article_id>')
+@login_required
+def get_edit_article(article_id):
+    article = Article.query.get_or_404(article_id)
+    categories = Category.query.all()
+    return render_template('new_article/new.html', categories=categories, article=article)
+
+@blueprint.post('/edit/<int:article_id>')
+@login_required
+def edit_article(article_id):
+    article = Article.query.get_or_404(article_id)
+    categories = Category.query.all()
+
+    if not all([
+    request.form['title'],
+    request.form['icon'],
+    request.form['text'],
+    # request.files['article_image'],
+    request.form['image_name'],
+    request.form['image_alt'],
+    ]):
+        return render_template('new_article/new.html',
+            categories=categories,
+            article=article,
+            error='Please fill out all fields to post your article'
+        )
+
+    # if 'article_id' in request.form:
+    #     article = Article.query.get(request.form['article_id'])
+    # else:
+    #     # create an article
+    article = Article.query.get_or_404(article_id)
+    article.icon = request.form['icon']
+    article.title = request.form['title']
+    article.text = request.form['text']
+    article.image_name = request.form['image_name']
+    article.image_alt = request.form['image_alt']
+
+    article.save()
+
+    return redirect(url_for('general_pages.index'))
+
+        # # save the article image
+        # uploaded_file = request.files['article_image']
+        # filename = secure_filename(uploaded_file.filename)
+        # uploaded_file.save('app/static/images/upload/' + filename)
+    
+    # selected_categories = request.form.getlist('categories')
+    # ArticleCategory.query.filter_by(article_id=article.id).delete()
+
+    # for category_id in selected_categories:
+    #     category = Category.query.get(category_id)
+    #     article.categories.append(category)
+    
+
+
 
 @blueprint.get('/new-category')
 @login_required

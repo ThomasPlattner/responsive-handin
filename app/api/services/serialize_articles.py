@@ -8,7 +8,7 @@ def serialize_articles(articles):
             'icon': article.icon,
             'text': article.text,
             'date': article.date,
-            'user_id': article.user_id,
+            # 'user_id': article.user_id,
         })
     
     return articles_list

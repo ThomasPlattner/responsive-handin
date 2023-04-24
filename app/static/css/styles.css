@@ -57,11 +57,31 @@ h1 {
     
 .navbar {
     font-family: Montserrat;
+    border-bottom: grey solid 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10vw;
+    padding: 1rem 1.5rem;
+}
+
+.menu {
+    align-items: center;
+}
+
+/* .navbar {
+    font-family: Montserrat;
     border-bottom: solid grey 2px;
-    display:flex; /*define nav container as a flexbox */
+    display:flex;
     gap:0.625%;
     align-items:stretch;
     margin: 0 10vw;
+} */
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .menu-item {
@@ -87,27 +107,65 @@ h1 {
     background: lightgrey;
 }
 
+.hamburger {
+    display: none;
+}
+  
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+  }
+
+
 /* Screen Sizes:
     - default screen width for desktop: >992px
     - screen size for tablet: 576-992px
     - screen size for mobile: <576px -> no grid applies; posts are displayed vertically in default html format */
 
-@media screen and (min-width: 576px) {
-    h1 {
-       text-align: center;
+@media screen and (max-width: 576px) {
+    .hamburger {
+        display: block;
+    }
+
+    .menu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.8s top;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+    
+    .menu.active {
+        left: 0;
+    }
+
+    .menu-item {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(-45deg)
+    }
+
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(45deg)
     }
 }  
-
-@media screen and (min-width: 992px) {
-    #article-overview {
-        display:grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: auto;
-        column-gap: 3%;
-        row-gap: 5%;
-        column-count: 3;
-    }
-}
 
 
 @media screen and (min-width: 576px) and (max-width: 992px) {
@@ -119,7 +177,36 @@ h1 {
         row-gap: 5%;
         column-count: 3;
     }
+
+    h1 {
+        text-align: center;
+     }
+
+    .hamburger {
+        display: none;
+    }
 }
+
+@media screen and (min-width: 992px) {
+    #article-overview {
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        column-gap: 3%;
+        row-gap: 5%;
+        column-count: 3;
+    }
+
+    h1 {
+        text-align: center;
+     }
+
+     .hamburger {
+        display: none;
+    }
+
+}
+
 
 /* General main section formatting */
 

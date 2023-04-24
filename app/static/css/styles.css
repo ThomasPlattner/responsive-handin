@@ -55,7 +55,7 @@ h1 {
     margin-left: 0.5em;
 }
     
-nav {
+.navbar {
     font-family: Montserrat;
     border-bottom: solid grey 2px;
     display:flex; /*define nav container as a flexbox */
@@ -64,8 +64,12 @@ nav {
     margin: 0 10vw;
 }
 
+.menu-item {
+    list-style: none;
+    display: inline;
+}
 
-nav a{
+.menu-item a{
     text-decoration: none;
     color:black;
     font-size: 1.5vw;
@@ -79,7 +83,7 @@ nav a{
     text-align: center;
 }
 
-nav a:hover {
+.menu-item a:hover {
     background: lightgrey;
 }
 

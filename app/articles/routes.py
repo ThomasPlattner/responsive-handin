@@ -22,7 +22,7 @@ def blog(slug):
         if slug.title() == article.title:
             text = article.text
             print(text)
-            return render_template('articles/article_template.html', text=text)
+            return render_template('articles/article_template.html', text=text, article=article)
             break
     else:
         message = "Sorry, we couldn't find the article about " + slug + " :( "

@@ -38,7 +38,7 @@ def post_article():
         request.form['title'],
         request.form['icon'],
         request.form['text'],
-        # request.files['article_image'],
+        request.files['article_image'],
         request.form['image_name'],
         request.form['image_alt'],
         ]):
@@ -58,10 +58,10 @@ def post_article():
 
     article.save()
 
-    # # save the article image
-    # uploaded_file = request.files['article_image']
-    # filename = secure_filename(uploaded_file.filename)
-    # uploaded_file.save('app/static/images/upload/' + filename)
+    # save the article image
+    uploaded_file = request.files['article_image']
+    filename = secure_filename(uploaded_file.filename)
+    uploaded_file.save('app/static/images/upload/' + filename)
 
     # uploaded_file=request.files['article_image']
     # if uploaded_file.filename != '':
@@ -71,13 +71,13 @@ def post_article():
     #     uploaded_file.save(os.path.join(app.config[UPLOAD_PATH], filename))
 
     # create rows in connector table for each article-category combination
-    # selected_categories = request.form.getlist('categories')
-    # for item in selected_categories:
-    #     article_category = ArticleCategory(
-    #         article_id = article.id,
-    #         category_id = item,
-    #     )
-    #     article_category.save()
+    selected_categories = request.form.getlist('categories')
+    for item in selected_categories:
+        article_category = ArticleCategory(
+            article_id = article.id,
+            category_id = item,
+        )
+        article_category.save()
 
     return redirect(url_for('general_pages.index'))
 
@@ -108,10 +108,6 @@ def edit_article(article_id):
             error='Please fill out all fields to post your article'
         )
 
-    # if 'article_id' in request.form:
-    #     article = Article.query.get(request.form['article_id'])
-    # else:
-    #     # create an article
     article = Article.query.get_or_404(article_id)
     article.icon = request.form['icon']
     article.title = request.form['title']
@@ -121,19 +117,30 @@ def edit_article(article_id):
 
     article.save()
 
-    return redirect(url_for('general_pages.index'))
 
-        # # save the article image
-        # uploaded_file = request.files['article_image']
-        # filename = secure_filename(uploaded_file.filename)
-        # uploaded_file.save('app/static/images/upload/' + filename)
+    # # save the article image
+    # uploaded_file = request.files['article_image']
+    # filename = secure_filename(uploaded_file.filename)
+    # uploaded_file.save('app/static/images/upload/' + filename)
     
+    selected_categories = request.form.getlist('categories')
+    ArticleCategory.query.filter_by(article_id=article.id).delete()
+
+    for item in selected_categories:
+        article_category = ArticleCategory(
+            article_id = article.id,
+            category_id = item,
+        )
+        article_category.save()
+
     # selected_categories = request.form.getlist('categories')
-    # ArticleCategory.query.filter_by(article_id=article.id).delete()
 
     # for category_id in selected_categories:
     #     category = Category.query.get(category_id)
     #     article.categories.append(category)
+
+    return redirect(url_for('general_pages.index'))
+
     
 
 

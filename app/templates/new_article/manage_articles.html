@@ -7,6 +7,7 @@
 {% block main %}
     <div>
         <h2>Manage Articles</h2>
+        <a href="{{ url_for('new_article.get_new_category') }}" alt="adding a new category"><button class="new_category" type="button">🏷️ Add new Category</button></a>
         <a href="{{ url_for('new_article.get_article') }}" alt="button leading to page for writing a new article"><button class="new_article" type="button">📄 Write new Article</button></a>    
     </div>
     <ul class="manage_article_list">

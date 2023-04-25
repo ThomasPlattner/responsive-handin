@@ -35,7 +35,7 @@
             {% for category in categories %}
             <label for="category_{{ category.id }}">{{ category.categories}}</label>
             <input type="checkbox" id="category_{{ category.id }}" name="categories" value="{{ category.id }}"
-                {% if article and category in article.categories %}
+                {% if category in ticked_categories %}
                     checked
                 {% endif %}><br>
             {% endfor %}

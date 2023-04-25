@@ -8,6 +8,8 @@
 
 {% block main %}
     <article class="blog-article">
+        <!-- {% for category in categories %}
+            <div>{{ Category</div> -->
         {% if current_user.is_authenticated %}
             <a href="{{ url_for('new_article.edit_article', article_id=article.id) }}" alt="button leading to editor form for this article"><button type="button">🖍️ Edit</button></a>
         {% endif %}

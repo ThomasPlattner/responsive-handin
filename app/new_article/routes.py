@@ -9,7 +9,7 @@ from sqlalchemy import select
 
 blueprint = Blueprint('new_article', __name__)
 
-# Management interface - GET & POST delete
+# Management interface - GET page & POST delete
 
 @blueprint.get('/manage')
 @login_required
@@ -27,8 +27,6 @@ def delete_article(article_id):
     article_category_rows.delete()
     # ArticleCategory.query.filter_by(article_id=article.id).delete()
 
-    orphaned_categories = ArticleCategory.query.filter(~ArticleCategory.article_id.in([a.id for a in Article.query.all()]))
-    orphaned_categories.delete()
     return redirect(url_for('new_article.get_manage'))
 
 # New article
@@ -101,7 +99,9 @@ def post_article():
 def get_edit_article(article_id):
     article = Article.query.get_or_404(article_id)
     categories = Category.query.all()
-    return render_template('new_article/new.html', categories=categories, article=article)
+    ticked_categories = Category.query.join(ArticleCategory.category)\
+        .filter(ArticleCategory.article_id == article.id).all()
+    return render_template('new_article/new.html', categories=categories, article=article, ticked_categories=ticked_categories)
 
 @blueprint.post('/edit/<int:article_id>')
 @login_required
@@ -140,7 +140,7 @@ def edit_article(article_id):
     # create rows in connector table for each article-category combination
     selected_categories_ids = request.form.getlist('categories')
 
-    ArticleCategory.query.filter_by(article_id=article.id, category_id=category_id).delete()
+    ArticleCategory.query.filter_by(article_id=article.id).delete()
 
     for item in selected_categories_ids:
         category_id = item
@@ -150,20 +150,6 @@ def edit_article(article_id):
         )
         article_category.save()
 
-    # selected_categories = request.form.getlist('categories')
-
-    # for item in selected_categories:
-    #     article_category = ArticleCategory(
-    #         article_id = article.id,
-    #         category_id = item,
-    #     )
-    #     article_category.save()
-
-    # selected_categories = request.form.getlist('categories')
-
-    # for category_id in selected_categories:
-    #     category = Category.query.get(category_id)
-    #     article.categories.append(category)
 
     return redirect(url_for('general_pages.index'))
 
@@ -178,8 +164,16 @@ def get_new_category():
 @login_required
 def post_new_category():
     # create a new category
-    category = Category(
+    existing_category = Category.query.filter_by(categories=request.form['new_categories']).first()
+    
+    if existing_category:
+        return render_template('new_article/new_category.html', error = 'The category already exists.')
+
+    if request.form['new_categories']:
+        category = Category(
         categories = request.form['new_categories']
-    )
-    category.save()
-    return render_template('new_article/new_category.html')
+        )
+        category.save()
+        return render_template('new_article/new_category.html')
+
+    return render_template('new_article/new_category.html', error='You did not add a category')

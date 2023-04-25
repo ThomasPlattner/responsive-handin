@@ -10,4 +10,9 @@
         <input type="submit" value="Add new Category">
     </form>
 
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+
 {% endblock %}

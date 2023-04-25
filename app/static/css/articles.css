@@ -1,0 +1,37 @@
+/* Article formatting */
+
+.blog-article {
+    width: 475px;
+    /* padding: 0 20vw; */
+    line-height: 1.5;
+    align-items: center;
+}
+
+.blog-article p::first-line {
+    text-indent: 50px;
+}
+
+.aside {
+    margin: 5vw 10vw 0 0;
+    position: fixed;
+    right:0vw;
+    background-color: lightgrey;
+    width: 18vw;
+    border-radius: 10px;
+}
+
+.aside-list {
+    list-style: none;
+    line-height: 1.5;
+}
+
+.aside-list a,
+.aside-list ul a:visited {
+    text-decoration: none;
+    color: rgb(81, 81, 81);
+}
+
+.aside-list a:hover {
+    text-decoration: underline;
+}
+

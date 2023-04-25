@@ -3,8 +3,9 @@ from datetime import datetime
 
 class ArticleCategory(db.Model, CRUDMixin):
     __tablename__ = 'article_category'
-    article_id = db.Column(db.Integer, db.ForeignKey('article.id', name='fk_article_id'), primary_key=True)
-    category_id = db.Column(db.Integer, db.ForeignKey('category.id', name='fk_category_id'), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    article_id = db.Column(db.Integer, db.ForeignKey('article.id', name='fk_article_id'))
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id', name='fk_category_id'))
 
 class Article(db.Model, CRUDMixin):
     __tablename__ = 'article'

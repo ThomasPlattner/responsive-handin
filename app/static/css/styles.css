@@ -15,6 +15,19 @@ main {
     margin: 0 10vw 0 0;
     text-align: right;
 }
+
+button {
+    border:none;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    background-color: white;
+}
+
+button:hover {
+    background-color: grey;
+    
+}
 /* General Typography */
 
 h2 {
@@ -40,188 +53,9 @@ a {
     font-size: 0.25vw;
 }
 
-/* Header and Main Navigation */
-
-#blogname {
-    text-decoration: none;
-    color: black;
-}
-
-h1 { 
-    font-family: Montserrat;     
-    font-weight: 500;
-    font-style: italic;
-    text-decoration: none;
-    margin-left: 0.5em;
-}
-    
-.navbar {
-    font-family: Montserrat;
-    border-bottom: grey solid 2px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 10vw;
-    padding: 1rem 1.5rem;
-}
-
-.menu {
-    align-items: center;
-}
-
-/* .navbar {
-    font-family: Montserrat;
-    border-bottom: solid grey 2px;
-    display:flex;
-    gap:0.625%;
-    align-items:stretch;
-    margin: 0 10vw;
-} */
-
-.menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu-item {
-    list-style: none;
-    display: inline;
-}
-
-.menu-item a{
-    text-decoration: none;
-    color:black;
-    font-size: 1.5vw;
-    font-weight: 200;
-    font-family: Montserrat;
-    border-radius: 30px;
-    width: 5%;
-    padding: 0.5vw;
-    margin: 1rem;
-    flex:auto;
-    text-align: center;
-}
-
-.menu-item a:hover {
-    background: lightgrey;
-}
-
-.hamburger {
-    display: none;
-}
-  
-.bar{
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-color: black;
-  }
-
-
-/* Screen Sizes:
-    - default screen width for desktop: >992px
-    - screen size for tablet: 576-992px
-    - screen size for mobile: <576px -> no grid applies; posts are displayed vertically in default html format */
-
-@media screen and (max-width: 576px) {
-    .hamburger {
-        display: block;
-    }
-
-    .menu {
-        position: fixed;
-        left: -500%;
-        top: 5rem;
-        flex-direction: column;
-        background-color: #fff;
-        width: 100%;
-        border-radius: 10px;
-        text-align: center;
-        transition: 0.8s top;
-        box-shadow:
-            0 10px 27px rgba(0, 0, 0, 0.05);
-    }
-    
-    .menu.active {
-        left: 0;
-    }
-
-    .menu-item {
-        margin: 2.5rem 0;
-    }
-
-    .hamburger.active .bar:nth-child(2){
-        opacity: 0;
-    }
-
-    .hamburger.active .bar:nth-child(1){
-        transform: translateY(8px) rotate(-45deg)
-    }
-
-    .hamburger.active .bar:nth-child(3){
-        transform: translateY(-8px) rotate(45deg)
-    }
-}  
-
-
-@media screen and (min-width: 576px) and (max-width: 992px) {
-    #article-overview {
-        display:grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-        column-gap: 3%;
-        row-gap: 5%;
-        column-count: 3;
-    }
-
-    h1 {
-        text-align: center;
-     }
-
-    .hamburger {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 992px) {
-    #article-overview {
-        display:grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: auto;
-        column-gap: 3%;
-        row-gap: 5%;
-        column-count: 3;
-    }
-
-    h1 {
-        text-align: center;
-     }
-
-     .hamburger {
-        display: none;
-    }
-
-}
-
-/* Darkmode */
-
-.make-light {
-    display: none;
-}
-
-.dark {
-    background-color: black;
-    color: white;
-}
-
 /* General main section formatting */
 
 /* Article Overview Formatting */
-
 
 .blog-posts {
     display:grid;
@@ -244,41 +78,6 @@ h1 {
 .post-description {
     font-size: 1vw;
     text-indent: 5%;
-}
-
-/* Article formatting */
-
-.blog-article {
-    padding: 0 20vw;
-    line-height: 1.5;
-}
-
-.blog-article p::first-line {
-    text-indent: 50px;
-}
-
-.aside {
-    margin: 5vw 10vw 0 0;
-    position: fixed;
-    right:0vw;
-    background-color: lightgrey;
-    width: 18vw;
-    border-radius: 10px;
-}
-
-.aside-list {
-    list-style: none;
-    line-height: 1.5;
-}
-
-.aside-list a,
-.aside-list ul a:visited {
-    text-decoration: none;
-    color: rgb(81, 81, 81);
-}
-
-.aside-list a:hover {
-    text-decoration: underline;
 }
 
 

@@ -5,8 +5,11 @@ from app.extensions.database import db
 import os.path
 from werkzeug.utils import secure_filename
 from flask_login import login_required
+from sqlalchemy import select
 
 blueprint = Blueprint('new_article', __name__)
+
+# Management interface - GET & POST delete
 
 @blueprint.get('/manage')
 @login_required
@@ -20,7 +23,15 @@ def delete_article(article_id):
     article = Article.query.get_or_404(article_id)
     article.delete()
 
+    article_category_rows = ArticleCategory.query.filter_by(article_id=article.id)
+    article_category_rows.delete()
+    # ArticleCategory.query.filter_by(article_id=article.id).delete()
+
+    orphaned_categories = ArticleCategory.query.filter(~ArticleCategory.article_id.in([a.id for a in Article.query.all()]))
+    orphaned_categories.delete()
     return redirect(url_for('new_article.get_manage'))
+
+# New article
 
 @blueprint.get('/new')
 @login_required
@@ -71,15 +82,19 @@ def post_article():
     #     uploaded_file.save(os.path.join(app.config[UPLOAD_PATH], filename))
 
     # create rows in connector table for each article-category combination
-    selected_categories = request.form.getlist('categories')
-    for item in selected_categories:
+    selected_categories_ids = request.form.getlist('categories')
+
+    for item in selected_categories_ids:
+        category_id = item
         article_category = ArticleCategory(
             article_id = article.id,
-            category_id = item,
+            category_id = category_id,
         )
         article_category.save()
 
     return redirect(url_for('general_pages.index'))
+
+# edit article
 
 @blueprint.get('/edit/<int:article_id>')
 @login_required
@@ -91,7 +106,6 @@ def get_edit_article(article_id):
 @blueprint.post('/edit/<int:article_id>')
 @login_required
 def edit_article(article_id):
-    article = Article.query.get_or_404(article_id)
     categories = Category.query.all()
 
     if not all([
@@ -123,15 +137,27 @@ def edit_article(article_id):
     # filename = secure_filename(uploaded_file.filename)
     # uploaded_file.save('app/static/images/upload/' + filename)
     
-    selected_categories = request.form.getlist('categories')
-    ArticleCategory.query.filter_by(article_id=article.id).delete()
+    # create rows in connector table for each article-category combination
+    selected_categories_ids = request.form.getlist('categories')
 
-    for item in selected_categories:
+    ArticleCategory.query.filter_by(article_id=article.id, category_id=category_id).delete()
+
+    for item in selected_categories_ids:
+        category_id = item
         article_category = ArticleCategory(
             article_id = article.id,
-            category_id = item,
+            category_id = category_id,
         )
         article_category.save()
+
+    # selected_categories = request.form.getlist('categories')
+
+    # for item in selected_categories:
+    #     article_category = ArticleCategory(
+    #         article_id = article.id,
+    #         category_id = item,
+    #     )
+    #     article_category.save()
 
     # selected_categories = request.form.getlist('categories')
 
@@ -141,9 +167,7 @@ def edit_article(article_id):
 
     return redirect(url_for('general_pages.index'))
 
-    
-
-
+# create category
 
 @blueprint.get('/new-category')
 @login_required

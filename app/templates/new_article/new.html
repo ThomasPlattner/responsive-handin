@@ -13,7 +13,6 @@
         {% if article %}
             <input type="hidden" name="article_id" value="{% if article %}{{ article_id }}{% endif %}">
         {% endif %}
-
         <div>
             <label for="icon">Icon</label>
             <input type="text" name="icon" id="icon" maxlength="30" value="{% if article %}{{ article.icon }}{% endif %}">
@@ -34,8 +33,8 @@
         <fieldset>
             <h3>Categories</h3>
             {% for category in categories %}
-            <label for="{{ category.id }}">{{ category.categories}}</label>
-            <input type="checkbox" id="{{ category.id }}" name="{{ category.id }}" value="{{ category.id }}"
+            <label for="category_{{ category.id }}">{{ category.categories}}</label>
+            <input type="checkbox" id="category_{{ category.id }}" name="categories" value="{{ category.id }}"
                 {% if article and category in article.categories %}
                     checked
                 {% endif %}><br>

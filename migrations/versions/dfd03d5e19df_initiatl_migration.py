@@ -1,8 +1,8 @@
-"""initial migration
+"""initiatl migration
 
-Revision ID: 7788fc7f9c6d
+Revision ID: dfd03d5e19df
 Revises: 
-Create Date: 2023-04-19 22:01:28.170631
+Create Date: 2023-04-25 18:23:49.871760
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7788fc7f9c6d'
+revision = 'dfd03d5e19df'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -45,11 +45,12 @@ def upgrade():
         batch_op.create_index(batch_op.f('ix_user_email'), ['email'], unique=True)
 
     op.create_table('article_category',
-    sa.Column('article_id', sa.Integer(), nullable=False),
-    sa.Column('category_id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('article_id', sa.Integer(), nullable=True),
+    sa.Column('category_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['article_id'], ['article.id'], name='fk_article_id'),
     sa.ForeignKeyConstraint(['category_id'], ['category.id'], name='fk_category_id'),
-    sa.PrimaryKeyConstraint('article_id', 'category_id')
+    sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
 

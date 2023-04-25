@@ -1,0 +1,50 @@
+/* Manage articles styling */
+
+.new_article {
+    border-radius: 10px;
+    right: 0;
+}
+
+.article_manage_li {
+    list-style: none;
+    display: flex;
+    margin: 10px 0 10px 0;
+    align-items: center;
+    ;
+}
+
+.article_manage_button {
+    display: grid;
+    grid-template-columns: 3;
+    margin: 10px;
+    height: 50px;
+    background-color: white;
+    border: none;
+    text-decoration: none;
+}
+
+.article_manage_button:hover {
+    background-color: grey;
+}
+
+.article_manage_button:visited {
+    color: black;
+}
+
+#article_manage_title {
+    text-decoration: none;
+}
+
+#article_manage_title p {
+    font-size: 20px;
+}
+.manager_article_name {
+    text-decoration: none;
+}
+
+.article_manage_button button {
+    border-radius: 10px;
+}
+
+/* Style create/update article */
+

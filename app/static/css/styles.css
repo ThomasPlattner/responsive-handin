@@ -134,7 +134,7 @@ h1 {
 
     .menu {
         position: fixed;
-        left: -100%;
+        left: -500%;
         top: 5rem;
         flex-direction: column;
         background-color: #fff;
@@ -207,6 +207,16 @@ h1 {
 
 }
 
+/* Darkmode */
+
+.make-light {
+    display: none;
+}
+
+.dark {
+    background-color: black;
+    color: white;
+}
 
 /* General main section formatting */
 
@@ -223,6 +233,7 @@ h1 {
 
 .blog-posts img {
     width: 100%;
+    border-radius: 20px;
 }
 
 #article-overview a {

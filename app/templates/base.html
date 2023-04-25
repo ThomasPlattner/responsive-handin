@@ -33,6 +33,10 @@
                         <a href="{{ url_for('general_pages.contact') }}" alt="Contact Thomas">Contact</a>
                     </li>
                 </ul>
+                <button class="darkmode" onclick="darkmode()">
+                    <span class="make-dark">🌚</span>
+                    <span class="make-light">🌝</span>
+                </button>
                 <button class="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -73,7 +77,31 @@
             function toggleMenu() {
                 hamburger.classList.toggle("active")
                 menu.classList.toggle("active");
-            }            
+            }     
+
+            function darkmode() {
+                const element = document.body;
+                element.classList.toggle("dark");
+            }
+
+            
+            // const darkmode = document.querySelector(".darkmode")
+            // const makeDark = document.querySelector(".make-dark")
+            // const makelight = document.querySelector(".make-light")
+
+            // darkmode.addEventListener("click", changeDark)
+
+            // function changeDark() {
+            //     darkmode.classList.toggle("dark-mode")
+            //     if (darkmode === "active") {
+            //         makeDark.classList.display("none");
+            //         makeLight.classList.display("block")
+            //     } else {
+            //         makeLight.classList.display("none")
+            //         makeDark.classList.display("block")
+            //     }  
+            //     }
+        
         </script>
 
     </body>

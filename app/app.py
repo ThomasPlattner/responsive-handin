@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template
-from . import articles, general_pages, new_article, api, users
+from . import articles, general_pages, manage, api, users
 from app.extensions.database import db, migrate
 from app.extensions.authentication import login_manager
 
@@ -16,7 +16,7 @@ def create_app():
 def register_blueprints(app: Flask):
     app.register_blueprint(articles.routes.blueprint)
     app.register_blueprint(general_pages.routes.blueprint)
-    app.register_blueprint(new_article.routes.blueprint)
+    app.register_blueprint(manage.routes.blueprint)
     app.register_blueprint(api.routes.blueprint)
     app.register_blueprint(users.routes.blueprint)
 

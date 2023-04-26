@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/manage.css') }}">
+{% endblock%}
+
+
 {% block main %}
 
     <h2>Write a new Article</h2>
 
     {% if article %}
-        <form method="POST" enctype="multipart/form-data" action="{{ url_for('new_article.edit_article', article_id=article.id) }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ url_for('manage.get_edit_article', article_id=article.id) }}">
     {% elif new_article %}
-        <form method="POST" enctype="multipart/form-data" action="{{ url_for('new_article.post_article') }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ url_for('manage.post_article') }}">
     {% endif %}
 
         {% if article %}

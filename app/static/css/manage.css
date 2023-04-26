@@ -46,5 +46,17 @@
     border-radius: 10px;
 }
 
-/* Style create/update article */
+/* Category page styling */
 
+.category_list {
+    list-style: none;
+}
+
+.category_manage_name {
+    border: none;
+
+}
+
+.rename_category_button {
+    display: none;
+}

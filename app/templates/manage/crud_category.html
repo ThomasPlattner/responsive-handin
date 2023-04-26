@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/manage.css') }}">
+{% endblock%}
+
+
+{% block main %}
+
+    <ul class="category_list">
+        {% for category in categories %}
+        <li class="category_manage_li">
+
+            <form class="category_manage_title" method="POST" action="{{ url_for('manage.post_edit_category', category_id=category.id) }}">
+                <input class="category_manage_name" type="text" name="edit_categories" id="edit_categories" maxlength="30" value="{{ category.categories }}" onfocusout="submitEdit()">
+            </form>
+
+            <form class="category_manage_button" action="{{ url_for('manage.post_delete_category', category_id=category.id) }}" method="POST" onsubmit="return confirm('Are you sure?')" alt="Button for deleting this category">
+                <button type="submit">🗑️ Delete</button>
+            </form>
+
+        </li>   
+        {% endfor %}
+
+        <li>
+
+            <form method="POST" action="{{ url_for('manage.post_new_category') }}">
+                <input type="text" name="new_categories" id="new_categories" maxlength="30">
+                <input type="submit" value="Add new Category">
+            </form>
+
+        </li>
+    </ul>
+
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <script>
+        const categoryForms = document.querySelectorAll(".category_manage_title");
+
+        categoryForms.forEach(form =>{
+            const input = form.querySelector(".category_manage_name");
+            input.addEventListener('focusout', (event) => {
+                form.submit()
+            });
+        });
+    </script>
+
+{% endblock %}

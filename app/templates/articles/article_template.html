@@ -2,14 +2,14 @@
 
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/articles.css') }}">
-{% endblock%}
+{% endblock %}
 
 {% block aside %}{% endblock %}
 
 {% block main %}
     <article class="blog-article">
         {% if current_user.is_authenticated %}
-            <a href="{{ url_for('new_article.edit_article', article_id=article.id) }}" alt="button leading to editor form for this article"><button type="button">🖍️ Edit</button></a>
+            <a href="{{ url_for('manage.get_edit_article', article_id=article.id) }}" alt="button leading to editor form for this article"><button type="button">🖍️ Edit</button></a>
         {% endif %}
 
         <h2>{{ title }}</h2>

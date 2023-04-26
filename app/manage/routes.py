@@ -7,19 +7,19 @@ from werkzeug.utils import secure_filename
 from flask_login import login_required
 from sqlalchemy import select
 
-blueprint = Blueprint('new_article', __name__)
+blueprint = Blueprint('manage', __name__)
 
 # Management interface - GET page & POST delete
 
 @blueprint.get('/manage')
 @login_required
-def get_manage():
+def manage_articles():
     articles = Article.query.all()
-    return render_template('new_article/manage_articles.html', articles=articles)
+    return render_template('manage/manage_articles.html', articles=articles)
 
 @blueprint.post('/manage/<int:article_id>')
 @login_required
-def delete_article(article_id):
+def post_delete_article(article_id):
     article = Article.query.get_or_404(article_id)
     article.delete()
 
@@ -27,7 +27,7 @@ def delete_article(article_id):
     article_category_rows.delete()
     # ArticleCategory.query.filter_by(article_id=article.id).delete()
 
-    return redirect(url_for('new_article.get_manage'))
+    return redirect(url_for('manage.manage_articles'))
 
 # New article
 
@@ -36,7 +36,7 @@ def delete_article(article_id):
 def get_article():
     categories = Category.query.all()
     new_article = Article.query.all()
-    return render_template('new_article/new.html', categories=categories, new_article=new_article)
+    return render_template('manage/new.html', categories=categories, new_article=new_article)
 
 @blueprint.post('/new')
 @login_required
@@ -51,7 +51,7 @@ def post_article():
         request.form['image_name'],
         request.form['image_alt'],
         ]):
-            return render_template('new_article/new.html',
+            return render_template('manage/new.html',
                 categories=categories,
                 error='Please fill out all fields to post your article'
                 )
@@ -101,11 +101,11 @@ def get_edit_article(article_id):
     categories = Category.query.all()
     ticked_categories = Category.query.join(ArticleCategory.category)\
         .filter(ArticleCategory.article_id == article.id).all()
-    return render_template('new_article/new.html', categories=categories, article=article, ticked_categories=ticked_categories)
+    return render_template('manage/new.html', categories=categories, article=article, ticked_categories=ticked_categories)
 
 @blueprint.post('/edit/<int:article_id>')
 @login_required
-def edit_article(article_id):
+def post_edit_article(article_id):
     categories = Category.query.all()
 
     if not all([
@@ -116,7 +116,7 @@ def edit_article(article_id):
     request.form['image_name'],
     request.form['image_alt'],
     ]):
-        return render_template('new_article/new.html',
+        return render_template('manage/new.html',
             categories=categories,
             article=article,
             error='Please fill out all fields to post your article'
@@ -153,25 +153,16 @@ def edit_article(article_id):
 
     return redirect(url_for('general_pages.index'))
 
-# Edit categories
+# CRUD categories
 
-@blueprint.get('/manage/new-category')
+@blueprint.get('/manage/category')
 @login_required
-def get_new_category():
+def get_category():
     categories = Category.query.all()
 
-    return render_template('new_article/new_category.html', categories=categories)
+    return render_template('manage/crud_category.html', categories=categories)
 
-@blueprint.post('/manage/new-category/<int:category_id>')
-@login_required
-def delete_category(category_id):
-    category = Category.query.get_or_404(category_id)
-    category.delete()
-
-    return redirect(url_for('new_article.post_new_category'))
-
-
-@blueprint.post('/manage/new-category')
+@blueprint.post('/manage/category')
 @login_required
 def post_new_category():
     categories = Category.query.all()
@@ -179,7 +170,7 @@ def post_new_category():
     # check if category already exists
     existing_category = Category.query.filter_by(categories=request.form['new_categories']).first()
     if existing_category:
-        return render_template('new_article/new_category.html', 
+        return render_template('manage/crud_category.html', 
         categories=categories,
         error = 'The category already exists.')
 
@@ -189,18 +180,29 @@ def post_new_category():
         categories = request.form['new_categories']
         )
         category.save()
-        return redirect(url_for('new_article.post_new_category'))
+        return redirect(url_for('manage.get_category'))
 
-    return render_template('new_article/new_category.html', error='You did not add a category')
+    return render_template('manage/crud_category.html', 
+        error='You did not add a category', 
+        categories=categories)
 
-@blueprint.post('/manage/new-category/<int:category_id>')
+@blueprint.post('/manage/category/delete/<int:category_id>')
 @login_required
-def edit_category(category_id):
+def post_delete_category(category_id):
+    category = Category.query.get_or_404(category_id)
+    category.delete()
+
+    return redirect(url_for('manage.get_category'))
+
+
+@blueprint.post('/manage/category/<int:category_id>')
+@login_required
+def post_edit_category(category_id):
     categories = Category.query.all()
 
     # check if input field is empty
     if not request.form['edit_categories']:
-        return render_template('new_article/new_category.html',
+        return render_template('manage/crud_category.html',
             categories=categories,
             error = "The category has to have a name")
     
@@ -210,4 +212,4 @@ def edit_category(category_id):
 
     category.save()
 
-    return render_template('new_article/new_category.html', categories=categories)
+    return redirect(url_for('manage.get_category'))

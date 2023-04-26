@@ -14,7 +14,7 @@ blueprint = Blueprint('manage', __name__)
 @blueprint.get('/manage')
 @login_required
 def manage_articles():
-    articles = Article.query.all()
+    articles = Article.query.order_by(Article.id.asc()).all()
     return render_template('manage/manage_articles.html', articles=articles)
 
 @blueprint.post('/manage/<int:article_id>')

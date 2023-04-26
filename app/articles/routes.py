@@ -14,7 +14,7 @@ def blog(slug):
             categories = []
             article_categories = ArticleCategory.query.filter_by(article_id=article.id).all()
             for article_category in article_categories:
-                category = Category.query.with_entities(Category.categories).filter_by(id=article_category.category_id).first()
+                category = Category.query.with_entities(Category.category).filter_by(id=article_category.category_id).first()
                 categories.append(category[0])
 
             return render_template('articles/article_template.html', text=text, article=article, title=title, categories=categories)
@@ -22,3 +22,8 @@ def blog(slug):
     else:
         message = "Sorry, we couldn't find the article about " + slug + " :( "
         return render_template('/base.html', message=message)
+    
+@blueprint.route('/run-seed')
+def seed():
+    import app.scripts.seed
+    return 'seed complete'

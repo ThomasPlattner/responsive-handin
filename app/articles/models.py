@@ -22,5 +22,5 @@ class Article(db.Model, CRUDMixin):
 class Category(db.Model, CRUDMixin):
     __tablename__ = 'category'
     id = db.Column(db.Integer, primary_key=True)
-    categories = db.Column(db.String(30))
+    category = db.Column(db.String(30))
     article_categories = db.relationship('ArticleCategory', backref='category', lazy=True)

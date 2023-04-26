@@ -177,7 +177,7 @@ def post_new_category():
     # create a new category
     if request.form['new_categories']:
         category = Category(
-        categories = request.form['new_categories']
+        category = request.form['new_categories']
         )
         category.save()
         return redirect(url_for('manage.get_category'))
@@ -208,7 +208,7 @@ def post_edit_category(category_id):
     
     # edit selected category
     category = Category.query.get_or_404(category_id)
-    category.categories = request.form['edit_categories']
+    category.category = request.form['edit_categories']
 
     category.save()
 

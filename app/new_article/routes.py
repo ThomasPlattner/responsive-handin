@@ -153,27 +153,61 @@ def edit_article(article_id):
 
     return redirect(url_for('general_pages.index'))
 
-# create category
+# Edit categories
 
-@blueprint.get('/new-category')
+@blueprint.get('/manage/new-category')
 @login_required
 def get_new_category():
-    return render_template('new_article/new_category.html')
+    categories = Category.query.all()
 
-@blueprint.post('/new-category')
+    return render_template('new_article/new_category.html', categories=categories)
+
+@blueprint.post('/manage/new-category/<int:category_id>')
+@login_required
+def delete_category(category_id):
+    category = Category.query.get_or_404(category_id)
+    category.delete()
+
+    return redirect(url_for('new_article.post_new_category'))
+
+
+@blueprint.post('/manage/new-category')
 @login_required
 def post_new_category():
-    # create a new category
-    existing_category = Category.query.filter_by(categories=request.form['new_categories']).first()
-    
-    if existing_category:
-        return render_template('new_article/new_category.html', error = 'The category already exists.')
+    categories = Category.query.all()
 
+    # check if category already exists
+    existing_category = Category.query.filter_by(categories=request.form['new_categories']).first()
+    if existing_category:
+        return render_template('new_article/new_category.html', 
+        categories=categories,
+        error = 'The category already exists.')
+
+    # create a new category
     if request.form['new_categories']:
         category = Category(
         categories = request.form['new_categories']
         )
         category.save()
-        return render_template('new_article/new_category.html')
+        return redirect(url_for('new_article.post_new_category'))
 
     return render_template('new_article/new_category.html', error='You did not add a category')
+
+@blueprint.post('/manage/new-category/<int:category_id>')
+@login_required
+def edit_category(category_id):
+    categories = Category.query.all()
+
+    # check if input field is empty
+    if not request.form['edit_categories']:
+        return render_template('new_article/new_category.html',
+            categories=categories,
+            error = "The category has to have a name")
+    
+    # edit selected category
+    category = Category.query.get_or_404(category_id)
+    category.categories = request.form['edit_categories']
+
+    category.save()
+
+    return render_template('new_article/new_category.html', categories=categories)

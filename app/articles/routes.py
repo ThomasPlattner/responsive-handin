@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from .models import Article
+from .models import Article, Category, ArticleCategory
 
 blueprint = Blueprint('articles', __name__)
     
@@ -9,7 +9,15 @@ def blog(slug):
     for article in blogs:
         if slug.title() == article.title:
             text = article.text
-            return render_template('articles/article_template.html', text=text, article=article)
+            title = article.title
+
+            categories = []
+            article_categories = ArticleCategory.query.filter_by(article_id=article.id).all()
+            for article_category in article_categories:
+                category = Category.query.with_entities(Category.categories).filter_by(id=article_category.category_id).first()
+                categories.append(category[0])
+
+            return render_template('articles/article_template.html', text=text, article=article, title=title, categories=categories)
             break
     else:
         message = "Sorry, we couldn't find the article about " + slug + " :( "

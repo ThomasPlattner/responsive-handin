@@ -158,7 +158,7 @@ def post_edit_article(article_id):
 @blueprint.get('/manage/category')
 @login_required
 def get_category():
-    categories = Category.query.all()
+    categories = Category.query.order_by(Category.id.asc()).all()
 
     return render_template('manage/crud_category.html', categories=categories)
 

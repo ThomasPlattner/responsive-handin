@@ -2,36 +2,32 @@
 
 .blog-article {
     width: 475px;
-    /* padding: 0 20vw; */
-    line-height: 1.5;
+    padding: 0 20vw;
     align-items: center;
+    line-height: 2;
+
 }
 
-.blog-article p::first-line {
+.article-title {
+    font-size: 50;
+}
+
+.article-categories {
+    display: inline;
+}
+.category-tag {
+    border: solid black;
+    color: white;
+    background-color: black;
+    border-radius: 20px;
+    width: auto;
+}
+
+.blog-article .article-text {
     text-indent: 50px;
+    font: Montserrat;
 }
 
-.aside {
-    margin: 5vw 10vw 0 0;
-    position: fixed;
-    right:0vw;
-    background-color: lightgrey;
-    width: 18vw;
-    border-radius: 10px;
+.article-text p::first-line {
+    line-height: 3;
 }
-
-.aside-list {
-    list-style: none;
-    line-height: 1.5;
-}
-
-.aside-list a,
-.aside-list ul a:visited {
-    text-decoration: none;
-    color: rgb(81, 81, 81);
-}
-
-.aside-list a:hover {
-    text-decoration: underline;
-}
-

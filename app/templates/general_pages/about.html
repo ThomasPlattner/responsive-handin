@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+{% endblock%}
+
 {% block main %}
+    <h2 class="page-title">About me</h2>
     <p>
         You will be able to find a short intro about me here soon.
     </p>

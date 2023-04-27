@@ -12,14 +12,14 @@
             <a href="{{ url_for('manage.get_edit_article', article_id=article.id) }}" alt="button leading to editor form for this article"><button type="button">🖍️ Edit</button></a>
         {% endif %}
 
-        <h2>{{ title }}</h2>
+        <h2 class="article-title">{{ title }}</h2>
 
-        <div class="article_categories">
+        <div class="article-categories">
             {% for category in categories %}
-            <div class="category_tag">{{ category }}</div>
+            <div class="category-tag">{{ category }}</div>
             {% endfor %}
         </div>
 
-        <p>{{ text }}</p>
+        <p class="article-text">{{ text }}</p>
     </article>
 {% endblock %}

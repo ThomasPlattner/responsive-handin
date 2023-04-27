@@ -9,7 +9,6 @@
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
             <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
             {% block head %}{% endblock %}
             <title>Thomas' Blog - {% block title %}{% endblock %}</title>
@@ -71,7 +70,7 @@
             <p>Thomas Plattner, 2023</p>
         </footer>            
         <script>
-            // Hamburger menu
+            // Hamburger menu - followed tutorial on https://dev.to/devggaurav/let-s-build-a-responsive-navbar-and-hamburger-menu-using-html-css-and-javascript-4gci
             const hamburger = document.querySelector(".hamburger")
             const menu = document.querySelector(".menu")
 
@@ -80,7 +79,7 @@
             function toggleMenu() {
                 hamburger.classList.toggle("active")
                 menu.classList.toggle("active");
-            }   
+            }
             
             // Darkmode
             function darkmode() {

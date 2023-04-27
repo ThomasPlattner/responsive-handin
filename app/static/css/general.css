@@ -1,0 +1,35 @@
+
+/* General main section formatting */
+
+/* Article Overview Formatting */
+
+.blog-posts {
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2;
+    width:100%;
+    margin: 0 0vw;
+}
+
+.blog-posts img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+#article-overview a {
+    text-decoration: none;
+    color: black;
+}
+
+.post-description {
+    font-size: 1vw;
+    text-indent: 5%;
+}
+
+
+/* contact page */
+
+#maps-embed {
+    width: 100%;
+    margin-top: 0.5vw;
+}

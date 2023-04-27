@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock%}
+
 {% block main %}
     <h2>Register</h2>
 

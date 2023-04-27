@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+{% endblock%}
+
+
 {% block main %}
     <section class="content">
-        <h2>Latest Articles</h2>
+        <h2 class="page-title">Latest Articles</h2>
         <div id="article-overview">
             {% for article in articles_pagination.items %}
             <a class="blog-posts" href="../blog/{{ article.title | lower }}">

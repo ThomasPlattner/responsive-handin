@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+{% endblock%}
+
 {% block main %}
     <div class="content">
+        <h2 class="page-title">Contact</h2>
         <p id="contact">You can reach me here: <br>
         <address>Lohmühlenstraße 65<br>
                 12435 Berlin<br>

@@ -7,7 +7,7 @@ The foundations handin is a personal blog. It has the following general pages:
 - About: More info about the author
 - Categories: Overview of blog articles seperated into different categories
 
-The main parts are articles. The script loads four articles:
+The main parts are articles. There is a script loading four articles by default:
 - Cars
 - Boats
 - Planes
@@ -77,4 +77,4 @@ As of this point, there are three areas where there is client-side JavaScript. O
 ## Upcoming features
 - contact form
 - Intro to the author in /about
-- remove category menu-item and add filter form on index to bundle /index and /categories
+- remove /category page and add filter form on index to bundle /index and /categories

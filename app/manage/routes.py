@@ -168,7 +168,7 @@ def post_new_category():
     categories = Category.query.all()
 
     # check if category already exists
-    existing_category = Category.query.filter_by(categories=request.form['new_categories']).first()
+    existing_category = Category.query.filter_by(category=request.form['new_categories']).first()
     if existing_category:
         return render_template('manage/crud_category.html', 
         categories=categories,

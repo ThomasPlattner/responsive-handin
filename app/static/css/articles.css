@@ -8,26 +8,85 @@
 
 }
 
+.heading-section {
+    display: flex;
+    align-items: center;
+}
+
 .article-title {
     font-size: 50;
 }
 
+#edit-article {
+    font-size: 16px;
+    color: white;
+    background-color: grey;
+    padding: 2px 15px;
+    border-radius: 20px;
+    outline: none;
+    text-decoration: none;
+}
+
+#edit-article:hover {
+    background-color: black;
+}
+
+
+/* Category tags */
+
 .article-categories {
-    display: inline;
+    display: flex;
 }
 .category-tag {
-    border: solid black;
-    color: white;
-    background-color: black;
-    border-radius: 20px;
+    border: black solid 1px;
+    color: black;
+    background-color: none;
+    border-radius: 10px;
     width: auto;
+    font-size: 16px;
+    margin: 0 5px;
+    padding: 0 10px;
 }
+
+/* text */
 
 .blog-article .article-text {
     text-indent: 50px;
-    font: Montserrat;
+    font-family: Lato;
+    font-size: 16px;
 }
 
 .article-text p::first-line {
     line-height: 3;
+}
+
+/* Darkmode */
+
+.darkmode {
+    border-radius: 30px;
+    margin-left: 40px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+}
+
+.darkmode:hover {
+    font-size: 20px;
+}
+
+/* Darkmode */
+
+.make-light {
+    display: none;
+}
+
+.dark {
+    background-color: #121212;
+    color: white;
+    border: white;
+}
+
+.dark-color {
+
 }

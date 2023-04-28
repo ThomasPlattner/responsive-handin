@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/manage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/new.css') }}">
 {% endblock%}
 
 
@@ -18,54 +18,81 @@
         {% if article %}
             <input type="hidden" name="article_id" value="{% if article %}{{ article_id }}{% endif %}">
         {% endif %}
-        <div class="form-question">
-            <label for="icon">Icon</label>
-            <input type="text" name="icon" id="icon" maxlength="30" value="{% if article %}{{ article.icon }}{% endif %}">
+
+        <div id="your-article">
+            <h3 class="sub-title" >Your Article</h3>
         </div>
 
-        <div class="form-question">
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" maxlength="80" value="{% if article %}{{ article.title }}{% endif %}">
-        </div>
+        <div id="article-heading">
+            
+            <div id="article-heading-elements">
 
-        <div class="form-question">
-            <label for="text">Text</label>
-            <!-- <textarea name="text" id="text" maxlength="20000" rows="20" cols="40" value="{% if article %}{{ article.text }}{% endif %}"></textarea> -->
+                <div id="article-icon">
+                    <label class="heading-label" for="icon">Icon:</label>
+                    <input class="heading-input" type="text" name="icon" id="icon" maxlength="30" value="{% if article %}{{ article.icon }}{% endif %}">
+                </div>
+
+                <div id="article-title">
+                    <label class="heading-label" for="title">Title:</label>
+                    <input class="heading-input" type="text" name="title" id="title" maxlength="80" value="{% if article %}{{ article.title }}{% endif %}">
+                </div>
+            </div>
+        </div>  
+
+        <div id="text-div">
+            <!-- <label class="question-label" for="text">Text</label>
+            <textarea type="text" name="text" id="text" maxlength="20000" rows="20" cols="40" placeholder="Your next article...">
+                {% if article %}
+                    {{ article.text }}
+                {% endif %}
+            </textarea> -->
             <input type="text" name="text" id="text" maxlength="20000" value="{% if article %}{{ article.text }}{% endif %}">
         </div>
 
+        <div id="categories-div">
+            <div>
+                <h3 class="sub-title">Categories</h3>
 
-        <fieldset>
-            <h3 class="sub-title">Categories</h3>
-            {% for category in categories %}
-            <label for="category_{{ category.id }}">{{ category.category }}</label>
-            <input type="checkbox" id="category_{{ category.id }}" name="categories" value="{{ category.id }}"
-                {% if category in ticked_categories %}
-                    checked
-                {% endif %}><br>
-            {% endfor %}
+                <ul id="category-list-new">
 
-        </fieldset>
+                {% for category in categories %}
+                    <li class="category-li-new">
+                        <label class="question-label"  for="category_{{ category.id }}">{{ category.category }}</label>
+                        <input class="category-checkbox" type="checkbox" id="category_{{ category.id }}" name="categories" value="{{ category.id }}"
+                            {% if category in ticked_categories %}
+                                checked
+                            {% endif %}>
+                    </li>
+                {% endfor %}
 
-        <fieldset>
-            <h3 class="sub-title">Title image</h3>
-
-            <div class="form-question">
-                <input class="form-question" type="file" id="article_image" name="article_image" accept=".png, .jpg, .jpeg, .gif, .svg" max-file-size="4 * 1024 * 1024">
+                </ul>
             </div>
+        </div>
 
-            <div class="form-question">
-                <label for="image_name">Image name</label>
-                <input type="" name="image_name" id="image_name" maxlength="30" value="{% if article %}{{ article.image_name }}{% endif %}">
-            </div>
-            
-            <div class="form-question">
-                <label for="image_alt">Image alternative description</label>
-                <input type="text" name="image_alt" id="image_alt" maxlength="80" value="{% if article %}{{ article.image_alt }}{% endif %}">
-            </div>
-        </fieldset>
+        <div id="image-div">
+            <div>
+                <h3 class="sub-title">Title image</h3>
 
-        <input type="submit" value="Post Article">
+                <div id="image-upload-field">
+                    <!-- <label id="image-upload-label" class="question-label" for="article-image">Article Title Image</label> -->
+                    <input id="image-upload-input" class="question-input"  type="file" id="article_image" name="article_image" accept=".png, .jpg, .jpeg, .gif, .svg" max-file-size="4 * 1024 * 1024">
+                </div>
+
+                <div class="form-image">
+                    <label class="question-label" for="image_name">Image name</label>
+                    <input class="question-input" type="text" name="image_name" id="image_name" maxlength="30" value="{% if article %}{{ article.image_name }}{% endif %}">
+                </div>
+                
+                <div class="form-image">
+                    <label class="question-label" for="image_alt">Image alternative description</label>
+                    <input class="question-input" type="text" name="image_alt" id="image_alt" maxlength="80" value="{% if article %}{{ article.image_alt }}{% endif %}">
+                </div>
+            </div>
+        </div>
+
+        <div id="post-article-div">
+        <input id="post-article" type="submit" value="Post Article">
+        </div>
     </form>
 
     {% if error %}

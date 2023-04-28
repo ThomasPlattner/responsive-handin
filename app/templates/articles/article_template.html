@@ -8,11 +8,20 @@
 
 {% block main %}
     <article class="blog-article">
+
         {% if current_user.is_authenticated %}
-            <a href="{{ url_for('manage.get_edit_article', article_id=article.id) }}" alt="button leading to editor form for this article"><button type="button">🖍️ Edit</button></a>
+            <a id="edit-article" href="{{ url_for('manage.get_edit_article', article_id=article.id) }}" alt="button leading to editor form for this article">
+                    🖍️ Edit Article
+            </a>
         {% endif %}
 
-        <h2 class="article-title">{{ title }}</h2>
+        <div class="heading-section">
+            <h2 class="article-title">{{ title }}</h2>
+            <button class="darkmode" onclick="darkmode()">
+                <span class="make-dark">🌚</span>
+                <span class="make-light">🌝</span>
+            </button>
+        </div>
 
         <div class="article-categories">
             {% for category in categories %}
@@ -22,4 +31,38 @@
 
         <p class="article-text">{{ text }}</p>
     </article>
+
+    <script>
+        // Darkmode - only for reading articles
+        function darkmode() {
+            const elements = document.querySelectorAll('header, body, nav, main, footer');
+
+            elements.forEach((element) => {
+                element.classList.toggle("dark")
+            })
+        }
+
+            //         // Darkmode
+            //         function darkmode() {
+            //     const element = document.body;
+            //     element.classList.toggle("dark");
+            // }
+                // const darkmode = document.querySelector(".darkmode")
+            // const makeDark = document.querySelector(".make-dark")
+            // const makelight = document.querySelector(".make-light")
+
+            // darkmode.addEventListener("click", changeDark)
+
+            // function changeDark() {
+            //     darkmode.classList.toggle("dark-mode")
+            //     if (darkmode === "active") {
+            //         makeDark.classList.display("none");
+            //         makeLight.classList.display("block")
+            //     } else {
+            //         makeLight.classList.display("none")
+            //         makeDark.classList.display("block")
+            //     }  
+            //     }
+
+    </script>
 {% endblock %}

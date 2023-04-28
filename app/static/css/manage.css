@@ -4,15 +4,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+    margin: 0 40px;
 
-.page-title-section page-title {
-    align-self: flex-start;
 }
 
 .page-title-section div {
     display: flex;
     justify-content: flex-end;
+}
+
+.page-title {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 24px;
 }
 
 .new-buttons {
@@ -23,107 +27,74 @@
 
 .new-buttons button {
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 3px 20px;
+    color: white;
+    background-color: grey;
 }
 
 .new-buttons button:hover {
-    background: grey;
+    background: black;
+    cursor: pointer;
 }
 
 .new-buttons button:visited {
     text-decoration: none;
 }
 
+/* list of articles to edit */
+
+.article-ul {
+    margin-right: 40px;
+}
+
 .article-manage-li {
     list-style: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-.manager-article-name {
-    font-size: 24;
+
+#article-manage-title {
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+}
+
+#article-manage-title p {
+    font-size: 20px;
+    font-weight: 500;
+
 }
 
 .article-manage-div {
     display: flex;
     align-items: right;
-    margin: 0 20vw;
 }
 
 .article-manage-button button{
     background-color: white;
     border: none;
     text-decoration: none;
-    margin: 0 10px;
-    padding: 10px 20px;
+    margin: 0 60px 0 10px;
+    padding: 3px 17px;
     border-radius: 30px;
-    font-size: 20px;
-}
-
-.article-manage-button button:visited {
-    color: black;
+    font-size: 16px;
 }
 
 .article-manage-button button:hover {
-    background-color: grey;
+    background-color: lightgrey;
+    cursor: pointer;
 }
 
-#article-manage-title {
+.lower-new-button {
     text-decoration: none;
+    margin-left: 40px;
 }
 
-/* Category page styling */
-
-.category-list {
-    list-style: none;
-}
-
-.category-manage-li {
-    display: flex;
-    margin: 20px 0;
-}
-
-.category-manage-name {
-    border: none;
-    border-radius: 20px;
-}
-
-.category-manage-name:focus {
-    outline: none;
-}
-
-.category-manage-button {
-    margin-left: 50px;
-}
-
-.category-manage-button button {
-    border-radius: 20px;
-}
-
-#new-category-name:focus::placeholder {
-    color: transparent;
-}
-
-#new-category-save {
-    border: none;
-    background-color: darkgrey;
-    color: white;
-    padding: 0 16px;
-    border-radius: 20px;
-}
-
-#new-category-save:hover {
-    background-color: black;
-}
-
-/* .category-manage-button button:hover {
-    border-radius:20px;
-    background-color: grey; */
-
-/* write articel page styling */
-
-.sub-title {
-    font: Montserrat;
-    font-weight: 200;
-    font-size: 12;
+.lower-new-button p {
+    font-size: 18px;
+    font-weight: 400;
+    color: grey;
+    font-family: Montserrat;
 }

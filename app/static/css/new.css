@@ -1,0 +1,177 @@
+/* write article page styling */
+
+/* general styling */
+
+.page-title {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 24px;
+    margin-left: 40px;
+}
+
+.sub-title {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.question-label {
+    font-family: Lato;
+    font-size: 16px;
+}
+
+
+/* Icon & title */
+
+#your-article {
+    display: flex;
+    justify-content: center;
+}
+
+#your-article .sub-title {
+    width: 475px;
+    display:flex;
+    justify-content: left;
+}
+
+#article-heading {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#article-heading-elements {
+    width: 475px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading-label {
+    font-family: Lato;
+    font-size: 16px;
+}
+
+#article-icon input,
+#article-title input {
+    margin-left: 8px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: solid black 0.3px;
+}
+
+#article-icon input:focus,
+#article-title input:focus {
+    border: black solid 0.5px;
+    outline: none;
+}
+
+#article-icon input {
+    width: 18px;
+}
+
+#article-title input {
+    width: 320px;
+}
+
+/* Text */
+
+#text-div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#text {
+    width: 475px;
+    font-family: Lato;
+    font-size: 16px;
+    text-indent: 50px;
+    border-radius: 10px;
+    border: solid black 0.3px;
+    outline: none;
+    line-height: 2;
+}
+
+#text:focus {
+    text-indent: 0px;
+    border: black solid 0.5px;
+}
+
+/* Categories & Image upload boxes*/
+
+#categories-div,
+#image-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#categories-div div,
+#image-div div {
+    width: 475px;
+    border: black, solid, 0.3px;
+    border-radius: 10px;
+}
+
+/* Category styling */
+
+#category-list-new {
+    list-style: none;
+}
+
+.category-li-new {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.category-checkbox {
+    margin-right: 225px;
+    border-radius: 2px;
+}
+
+/* Image upload styling */
+
+#image-upload-field {
+    margin-bottom: 5px;
+    align-items: center;
+
+}
+
+#image-upload-input {
+    margin-left: 85px;
+}
+
+.form-image {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-image .question-input {
+    margin-right: 90px;
+}
+
+/* Post article button */
+
+#post-article-div {
+    text-align: right;
+}
+
+#post-article {
+    color: white;
+    background-color: grey;
+    font-size: 20px;
+    padding: 5px 30px;
+    border-radius: 20px;
+    border: none;
+}
+
+#post-article:hover {
+    background-color: black;
+    cursor: pointer;
+}

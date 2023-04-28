@@ -17,7 +17,7 @@
     <body>
         <header>
             <nav class="navbar">
-                <a id="blogname" href="{{ url_for('general_pages.index') }}" alt="Go to homepage"> 
+                <a class="blogname" href="{{ url_for('general_pages.index') }}" alt="Go to homepage"> 
                     <h1>Thomas' Blog</h1>
                 </a>    
                 <ul class="menu">
@@ -33,16 +33,19 @@
                     <li class="menu-item">
                         <a href="{{ url_for('general_pages.contact') }}" alt="Contact Thomas">Contact</a>
                     </li>
+                    {% if current_user.is_authenticated %}
+                    <li class="manage-menu">
+                        <a href="{{ url_for('manage.manage_articles') }}" alt="Button leading to article management page">Manage Articles</a><br>
+                    </li>
+                    {% endif %}
                 </ul>
-                <button class="darkmode" onclick="darkmode()">
-                    <span class="make-dark">🌚</span>
-                    <span class="make-light">🌝</span>
-                </button>
+
                 <button class="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
-                </button>
+                </button>    
+    
             </nav>  
         </header>
 
@@ -63,12 +66,12 @@
             {% endif %}
     
             {% if current_user.is_authenticated %}
-                <a href="{{ url_for('manage.manage_articles') }}" alt="Button leading to article management page">Manage Articles</a><br>
-                <p>Logged in as {{ current_user.email }}</p>
-                <a href="{{ url_for('users.logout') }}" alt="Button to log out">Logout</a>
+                <p><em>Logged in as {{ current_user.email }}</em></p>
+                <a id="logout-button" href="{{ url_for('users.logout') }}" alt="Button to log out">Logout</a>
             {% endif %}
             <p>Thomas Plattner, 2023</p>
-        </footer>            
+        </footer> 
+
         <script>
             // Hamburger menu - followed tutorial on https://dev.to/devggaurav/let-s-build-a-responsive-navbar-and-hamburger-menu-using-html-css-and-javascript-4gci
             const hamburger = document.querySelector(".hamburger")
@@ -79,30 +82,7 @@
             function toggleMenu() {
                 hamburger.classList.toggle("active")
                 menu.classList.toggle("active");
-            }
-            
-            // Darkmode
-            function darkmode() {
-                const element = document.body;
-                element.classList.toggle("dark");
-            }
-                // const darkmode = document.querySelector(".darkmode")
-            // const makeDark = document.querySelector(".make-dark")
-            // const makelight = document.querySelector(".make-light")
-
-            // darkmode.addEventListener("click", changeDark)
-
-            // function changeDark() {
-            //     darkmode.classList.toggle("dark-mode")
-            //     if (darkmode === "active") {
-            //         makeDark.classList.display("none");
-            //         makeLight.classList.display("block")
-            //     } else {
-            //         makeLight.classList.display("none")
-            //         makeDark.classList.display("block")
-            //     }  
-            //     }
-        
+            }        
         </script>
 
     </body>

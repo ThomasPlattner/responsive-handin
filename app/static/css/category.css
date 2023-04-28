@@ -1,0 +1,115 @@
+/* Category page styling */
+
+/* Heading & Description */
+
+.page-title {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 24px;
+    margin-left: 40px;
+}
+
+.sub-title {
+    font-family: Montserrat;
+    font-weight: 200;
+    font-size: 14px;
+    margin-left: 40px;
+
+}
+
+/* Category list display & update */
+
+.category-list {
+    list-style: none;
+    margin-right: 40px;
+
+}
+
+.category-manage-li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.category-manage-name,
+#new-category-name {
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    margin-left: 40px;
+}
+
+.category-manage-name:hover {
+    outline: solid lightgrey 1px;
+}
+
+/* delete category */
+
+.category-delete-button {
+    margin-right: 400px;
+}
+
+.category-delete-button button {
+    border-radius: 20px;
+    color: black;
+    background-color: transparent;
+    font-size: 14px;
+    padding: 2px 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.category-delete-button button:hover {
+    background-color: lightgrey;
+}
+
+
+/* add category */
+
+.new-category-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#new-category-name {
+    font-size: 16;
+    color: black;
+    margin-left: 60px;
+}
+
+#new-category-name:focus {
+    border: none;
+    outline: none;
+}
+
+#new-category-name::placeholder {
+    color: grey;
+    font-size: 16px;
+    font-style: italic;
+}
+
+
+#new-category-name:focus::placeholder {
+    color: lightgrey;
+    font-size: 16px;
+    font-style: italic;
+
+}
+
+#new-category-save {
+    border: none;
+    background-color: darkgrey;
+    color: white;
+    font-size: 14px;
+    padding: 2px 34px;
+    border-radius: 20px;
+    margin-right: 400px;
+}
+
+#new-category-save:hover {
+    background-color: black;
+    cursor: pointer;
+}

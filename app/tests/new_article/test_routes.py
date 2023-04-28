@@ -1,4 +1,4 @@
-from app.articles.models import Article, User, Category
+from app.articles.models import Article, Category
 
 def test_get_new_article_renders(client):
     # page loads & renders

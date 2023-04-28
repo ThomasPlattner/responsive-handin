@@ -11,7 +11,7 @@
         <div class="button-wrapper">
         <a id="category-button" class="new-buttons" href="{{ url_for('manage.get_category') }}" alt="adding a new category">
             <button type="button">
-                🏷️ Add new Category
+                🏷️ Edit Category Tags
             </button></a>
 
         <a class="new-buttons" href="{{ url_for('manage.get_article') }}" alt="button leading to page for writing a new article">
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <ul>
+    <ul class="article-ul">
     {% for article in articles %}
         <li class="article-manage-li">
 
@@ -30,17 +30,36 @@
                 <p class="manager-article-name">{{ article.icon }} {{ article.title }}</p>
             </a>
 
-            <div class="article-manage-div">
-            <a class="article-manage-button" href="{{ url_for('manage.get_edit_article', article_id=article.id) }}" alt="button leading to page for editing an article">
-                <button type="button" >🖍️ Edit</button>
-            </a>
-
-            <form class="article-manage-button" action="{{ url_for('manage.post_delete_article', article_id=article.id) }}" method="POST" onsubmit="return confirm('Are you sure?')" alt="Button for deleting this article">
-                <button type="submit">🗑️ Delete</button>
-            </form>
+            <div>
+                <div class="article-manage-div">
+                    <a class="article-manage-button" href="{{ url_for('manage.get_edit_article', article_id=article.id) }}" alt="button leading to page for editing an article">
+                        <button type="button" >🖍️ Edit Article</button>
+                    </a>
+        
+                    <form class="article-manage-button" action="{{ url_for('manage.post_delete_article', article_id=article.id) }}" method="POST" onsubmit="return confirm('Are you sure?')" alt="Button for deleting this article">
+                        <button type="submit">🗑️ Delete Article</button>
+                    </form>
+                </div>        
             </div>
 
-        </li>   
+        </li> 
+
+        <div class="list-line">
+            <p><hr color="lightgrey"></p>
+        </div>      
+
+        <span >
     {% endfor %}
+
+        <li class="article-manage-li">
+            <a class="lower-new-button" href="{{ url_for('manage.get_article') }}" alt="button leading to page for writing a new article">
+                <p>
+                    <em>
+                        + Write new Article
+                    </em>
+                </p>
+            </a>
+    
+        </li>
     </ul>
 {% endblock %}

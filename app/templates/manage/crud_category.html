@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/manage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/category.css') }}">
 {% endblock%}
 
 
 {% block main %}
+
+    <h2 class="page-title">Manage Categories</h2>
+    <h3 class="sub-title"><strong>Create, edit and delete your category tags:</strong></h3>
 
     <ul class="category-list">
         {% for category in categories %}
@@ -15,18 +18,24 @@
                 <input class="category-manage-name" type="text" name="edit_categories" id="edit_categories" maxlength="30" value="{{ category.category }}" onfocusout="submitEdit()">
             </form>
 
-            <form class="category-manage-button" action="{{ url_for('manage.post_delete_category', category_id=category.id) }}" method="POST" onsubmit="return confirm('Are you sure?')" alt="Button for deleting this category">
+            <form class="category-delete-button" action="{{ url_for('manage.post_delete_category', category_id=category.id) }}" method="POST" onsubmit="return confirm('Are you sure?')" alt="Button for deleting this category">
                 <button type="submit">🗑️ Delete</button>
             </form>
 
-        </li>   
+        </li>
+        
+        <div class="list-line">
+            <p><hr color="lightgrey"></p>
+        </div>      
+ 
         {% endfor %}
-
+        
+        <br>
         <li>
 
-            <form method="POST" action="{{ url_for('manage.post_new_category') }}">
-                <input id="new-category-name" class="category-manage-name" type="text" name="new_categories" id="new_categories" maxlength="30" placeholder=" + New Category...">
-                <input id="new-category-save" class="category-manage-button" type="submit" value="Save">
+            <form class="new-category-form" method="POST" action="{{ url_for('manage.post_new_category') }}">
+                <input id="new-category-name" type="text" name="new_categories" id="new_categories" maxlength="30" placeholder="+ New Category...">
+                <input id="new-category-save" type="submit" value="Save">
             </form>
 
         </li>
@@ -38,10 +47,10 @@
     {% endif %}
 
     <script>
-        const categoryForms = document.querySelectorAll(".category_manage_title");
+        const categoryForms = document.querySelectorAll(".category-manage-title");
 
         categoryForms.forEach(form =>{
-            const input = form.querySelector(".category_manage_name");
+            const input = form.querySelector(".category-manage-name");
             input.addEventListener('focusout', (event) => {
                 form.submit()
             });

@@ -17,17 +17,17 @@
             {% endfor %}
     </section>
 
-    <nav>
+    <nav id="paginate-nav">
         {% if articles_pagination.prev_num %}
-            <a href="{{ url_for('general_pages.index', page=articles_pagination.prev_num) }}" alt="Go to previous page">Previous Page</a>
+            <a class="paginate" href="{{ url_for('general_pages.index', page=articles_pagination.prev_num) }}" alt="Go to previous page">Previous Page</a>
         {% endif %}
 
         {% if articles_pagination.prev_num and articles_pagination.next_num %}
-            <span> - </span>
+            <span class="paginate-span"> - </span>
         {% endif %}
         
         {% if articles_pagination.next_num %}
-            <a href="{{ url_for('general_pages.index', page=articles_pagination.next_num) }}" alt="Go to next page">Next Page</a>
+            <a class="paginate" href="{{ url_for('general_pages.index', page=articles_pagination.next_num) }}" alt="Go to next page">Next Page</a>
         {% endif %}
     </nav>
 {% endblock %}

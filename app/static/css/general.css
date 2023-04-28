@@ -26,6 +26,27 @@
     text-indent: 5%;
 }
 
+#paginate-nav {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#paginate-nav a {
+    text-decoration: none;
+    padding:8px 18px;
+    color: grey;
+    border-radius: 20px;
+    background-color: transparent;
+    border: grey;
+    margin: 0 30px;
+}
+
+#paginate-nav a:hover {
+    background-color: grey;
+    color: white;
+}
+
 
 /* contact page */
 

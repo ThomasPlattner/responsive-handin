@@ -22,7 +22,6 @@
 .new-buttons {
     vertical-align: middle;
     margin-left: 20px;
-
 }
 
 .new-buttons button {
@@ -30,6 +29,7 @@
     padding: 3px 20px;
     color: white;
     background-color: grey;
+    border: none;
 }
 
 .new-buttons button:hover {
@@ -97,4 +97,5 @@
     font-weight: 400;
     color: grey;
     font-family: Montserrat;
+    margin: 50px;
 }

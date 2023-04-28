@@ -7,23 +7,25 @@ The foundations handin is a personal blog. It has the following general pages:
 - About: More info about the author
 - Categories: Overview of blog articles seperated into different categories
 
-The main parts are articles. For test purposes, there are four placeholder articles so far:
+The main parts are articles. The script loads four articles:
 - Cars
 - Boats
 - Planes
 - Bikes
 
-The articles were hardcoded until now and are now rendered from the database. More articles including images can be added through a form here: '/new'
+For creating new articles, a user has to be logged in. After logging in, a button in the top navbar appears which leads to an interface to manage articles.
+Now the user can create, edit and delete articles.
 
-Right now, I did not add styles to the html form.
+Every article can be assigned to a list of category tags. When creating or editing an article, the categories can be updated. For creating, updating and deleting new categeries, there is one form accessible through the manage articles interface.
 
-I did not manage to add a delete and edit function for the articles, but prepared the UI already. For editing articles, I will use the same form as for creating articles, but with the article database entries as default values.
-For deleting articles, I will call the delete function in the manage section
+As of this point, there are three areas where there is client-side JavaScript. One removes the top navbar menu items and replaces it with a hamburger menu for phone screens (<576px screen width). The second one allows to read articles in darkmode. The third one is in the category management interface and saves categories once the user removes the focus away from the field.
+
 
 ## Technologies used:
 1. **Frontend**
     - HTML
     - CSS
+    - JavaScript
 
 2. **Backend**
     - Flask
@@ -65,22 +67,14 @@ For deleting articles, I will call the delete function in the manage section
     pytest -v
 
 ## Changelog
-- Articles stored in database and rendered with HTML templates
-- Articles created through HTML forms
-- ability to add categories: '/new-category'
-- '/manage' interface: ability to create, update, delete articles
-    - create: link to '/new'
-    - update: coming soon, see "Upcoming features"
-    - delete: coming soon, see "Upcoming features"
+- added styles for manage articles interface
+- improved form to manage categories
+- repaired many-to-many relationship between Article and Category model
+- form when creating articles can display existing data from the database as default input to edit the article
+- authentication
 
 
 ## Upcoming features
 - contact form
 - Intro to the author in /about
-- more media queries for articles and other sites
-- Categories of articles (placeholders for development purposes; e.g., vehicles, 2 wheels, 4 wheels, >4 wheels, ...)
-- update articles: same form as when creating, but filled with existing database entries as default
-- delete article: call delete function 
-- authentication
-- refactoring and more tests
-- secure file upload in html form
+- remove category menu-item and add filter form on index to bundle /index and /categories

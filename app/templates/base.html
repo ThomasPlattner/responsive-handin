@@ -61,13 +61,15 @@
 
         <footer class="footer"> <!-- add class in css -->
             {% if not current_user.is_authenticated %}
-                <a href="{{ url_for('users.get_register') }}" alt="Button leading to register page">Register</a><br>
-                <a href="{{ url_for('users.login') }}" alt="Button leading to login page">Login</a>
+            <div class="registration-area">
+                <a class="registration-button" href="{{ url_for('users.get_register') }}" alt="Button leading to register page">Register</a><br>
+                <a class="registration-button" href="{{ url_for('users.login') }}" alt="Button leading to login page">Login</a>
+            </div>
             {% endif %}
     
             {% if current_user.is_authenticated %}
                 <p><em>Logged in as {{ current_user.email }}</em></p>
-                <a id="logout-button" href="{{ url_for('users.logout') }}" alt="Button to log out">Logout</a>
+                <a id="registration-button" href="{{ url_for('users.logout') }}" alt="Button to log out">Logout</a>
             {% endif %}
             <p>Thomas Plattner, 2023</p>
         </footer> 

@@ -32,6 +32,8 @@
     text-indent: 5%;
 }
 
+/* pagination */
+
 #paginate-nav {
     margin-top: 50px;
     display: flex;
@@ -41,16 +43,17 @@
 #paginate-nav a {
     text-decoration: none;
     padding:8px 18px;
-    color: grey;
+    color: black;
     border-radius: 20px;
     background-color: transparent;
-    border: grey;
+    border: black solid 1px;
     margin: 0 30px;
 }
 
 #paginate-nav a:hover {
-    background-color: grey;
+    background-color: black;
     color: white;
+    border: none;
 }
 
 .registration-area {
@@ -66,7 +69,7 @@
     margin-top: 0.5vw;
 }
 
-/* Registration & Login */
+/* Registration & Login pages */
 
 .registration-form {
     display: flex;
@@ -81,7 +84,7 @@
 
 .registration-field input {
     margin-right: 100px;
-    border: black solid 1px;
+    border: black solid 0.5px;
     border-radius: 20px;
 }
 

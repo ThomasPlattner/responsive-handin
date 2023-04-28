@@ -42,7 +42,6 @@
         <div id="text-div">
             <label class="question-label" for="text">Text</label>
             <textarea type="text" name="text" id="text" maxlength="20000" rows="20" cols="40" placeholder="Your next article...">{% if article %}{{ article.text }}{% endif %}</textarea>
-            <!-- <input type="text" name="text" id="text" maxlength="20000" value="{% if article %}{{ article.text }}{% endif %}"> -->
         </div>
 
         <div id="categories-div">
@@ -70,7 +69,6 @@
                 <h3 class="sub-title">Title image</h3>
 
                 <div id="image-upload-field">
-                    <!-- <label id="image-upload-label" class="question-label" for="article-image">Article Title Image</label> -->
                     <input id="image-upload-input" class="question-input"  type="file" id="article_image" name="article_image" accept=".png, .jpg, .jpeg, .gif, .svg" max-file-size="4 * 1024 * 1024">
                 </div>
 

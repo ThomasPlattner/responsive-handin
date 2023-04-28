@@ -59,7 +59,7 @@
         {% endblock %}
         </main>
 
-        <footer class="footer"> <!-- add class in css -->
+        <footer class="footer">
             {% if not current_user.is_authenticated %}
             <div class="registration-area">
                 <a class="registration-button" href="{{ url_for('users.get_register') }}" alt="Button leading to register page">Register</a><br>
@@ -69,7 +69,7 @@
     
             {% if current_user.is_authenticated %}
                 <p><em>Logged in as {{ current_user.email }}</em></p>
-                <a id="registration-button" href="{{ url_for('users.logout') }}" alt="Button to log out">Logout</a>
+                <a class="registration-button" href="{{ url_for('users.logout') }}" alt="Button to log out">Logout</a>
             {% endif %}
             <p>Thomas Plattner, 2023</p>
         </footer> 

@@ -77,16 +77,8 @@
 
 /* Darkmode */
 
-.make-light {
-    display: none;
-}
-
 .dark {
     background-color: #121212;
     color: white;
     border: white;
-}
-
-.dark-color {
-
 }

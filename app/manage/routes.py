@@ -9,6 +9,8 @@ from sqlalchemy import select
 
 blueprint = Blueprint('manage', __name__)
 
+
+
 # Management interface - GET page & POST delete
 
 @blueprint.get('/manage')
@@ -25,9 +27,10 @@ def post_delete_article(article_id):
 
     article_category_rows = ArticleCategory.query.filter_by(article_id=article.id)
     article_category_rows.delete()
-    # ArticleCategory.query.filter_by(article_id=article.id).delete()
 
     return redirect(url_for('manage.manage_articles'))
+
+
 
 # New article
 
@@ -72,13 +75,6 @@ def post_article():
     filename = secure_filename(uploaded_file.filename)
     uploaded_file.save('app/static/images/upload/' + filename)
 
-    # uploaded_file=request.files['article_image']
-    # if uploaded_file.filename != '':
-    #     file_ext = os.path.splitext(filename)
-    #     if file_ext not in app.config['UPLOAD_EXTENSIONS']:
-    #          abort(400)
-    #     uploaded_file.save(os.path.join(app.config[UPLOAD_PATH], filename))
-
     # create rows in connector table for each article-category combination
     selected_categories_ids = request.form.getlist('categories')
 
@@ -91,6 +87,8 @@ def post_article():
         article_category.save()
 
     return redirect(url_for('general_pages.index'))
+
+
 
 # edit article
 
@@ -112,7 +110,6 @@ def post_edit_article(article_id):
     request.form['title'],
     request.form['icon'],
     request.form['text'],
-    # request.files['article_image'],
     request.form['image_name'],
     request.form['image_alt'],
     ]):
@@ -131,12 +128,6 @@ def post_edit_article(article_id):
 
     article.save()
 
-
-    # # save the article image
-    # uploaded_file = request.files['article_image']
-    # filename = secure_filename(uploaded_file.filename)
-    # uploaded_file.save('app/static/images/upload/' + filename)
-    
     # create rows in connector table for each article-category combination
     selected_categories_ids = request.form.getlist('categories')
 
@@ -152,6 +143,8 @@ def post_edit_article(article_id):
 
 
     return redirect(url_for('general_pages.index'))
+
+
 
 # CRUD categories
 
@@ -191,6 +184,9 @@ def post_new_category():
 def post_delete_category(category_id):
     category = Category.query.get_or_404(category_id)
     category.delete()
+
+    article_category_rows = ArticleCategory.query.filter_by(category_id=category_id)
+    article_category_rows.delete()
 
     return redirect(url_for('manage.get_category'))
 

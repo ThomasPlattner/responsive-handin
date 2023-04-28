@@ -15,7 +15,8 @@ def blog(slug):
             article_categories = ArticleCategory.query.filter_by(article_id=article.id).all()
             for article_category in article_categories:
                 category = Category.query.with_entities(Category.category).filter_by(id=article_category.category_id).first()
-                categories.append(category[0])
+                if category is not None:
+                    categories.append(category[0])
 
             return render_template('articles/article_template.html', text=text, article=article, title=title, categories=categories)
             break

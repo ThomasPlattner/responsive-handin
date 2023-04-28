@@ -14,7 +14,7 @@ class Article(db.Model, CRUDMixin):
     icon = db.Column(db.String(30))
     text = db.Column(db.String(20000))
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    image_name = db.Column(db.String(30))  #needed? How does naming work?
+    image_name = db.Column(db.String(30))
     image_alt = db.Column(db.String(80)) 
     article_categories = db.relationship('ArticleCategory', backref='article', lazy=True)
 

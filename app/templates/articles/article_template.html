@@ -19,7 +19,6 @@
             <h2 class="article-title">{{ title }}</h2>
             <button class="darkmode" onclick="darkmode()">
                 <span class="make-dark">🌚</span>
-                <span class="make-light">🌝</span>
             </button>
         </div>
 
@@ -41,28 +40,5 @@
                 element.classList.toggle("dark")
             })
         }
-
-            //         // Darkmode
-            //         function darkmode() {
-            //     const element = document.body;
-            //     element.classList.toggle("dark");
-            // }
-                // const darkmode = document.querySelector(".darkmode")
-            // const makeDark = document.querySelector(".make-dark")
-            // const makelight = document.querySelector(".make-light")
-
-            // darkmode.addEventListener("click", changeDark)
-
-            // function changeDark() {
-            //     darkmode.classList.toggle("dark-mode")
-            //     if (darkmode === "active") {
-            //         makeDark.classList.display("none");
-            //         makeLight.classList.display("block")
-            //     } else {
-            //         makeLight.classList.display("none")
-            //         makeDark.classList.display("block")
-            //     }  
-            //     }
-
     </script>
 {% endblock %}

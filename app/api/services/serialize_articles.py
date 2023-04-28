@@ -8,7 +8,6 @@ def serialize_articles(articles):
             'icon': article.icon,
             'text': article.text,
             'date': article.date,
-            # 'user_id': article.user_id,
         })
     
     return articles_list
@@ -40,7 +39,5 @@ def serialize_article_categories(article_categories):
         article_categories_list.append({
             'id': article_category.id,
             'article_id': article_category.article_id,
-            # 'article_name': article_category.article.name,
-            # 'category_id': article_category.categegory_id,
         })
     return article_categories_list

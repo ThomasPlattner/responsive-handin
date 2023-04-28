@@ -38,7 +38,7 @@ def categories():
         return jsonify({'error': 'Invalid API key'}), 401
 
 
-@blueprint.get('/api/v1/article_categories')
+@blueprint.get('/api/v1/article-categories')
 def article_categories():
     if environ.get('API_KEY') == request.args.get('key'):
         article_categories = ArticleCategory.query.all()

@@ -5,9 +5,9 @@ blueprint = Blueprint('articles', __name__)
     
 @blueprint.route('/blog/<slug>')
 def blog(slug):
-    blogs = Article.query.all()
-    for article in blogs:
-        if slug.title() == article.title:
+    articles = Article.query.all()
+    for article in articles:
+        if slug.title() == article.title.title():
             text = article.text
             title = article.title
 

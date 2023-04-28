@@ -40,13 +40,9 @@
         </div>  
 
         <div id="text-div">
-            <!-- <label class="question-label" for="text">Text</label>
-            <textarea type="text" name="text" id="text" maxlength="20000" rows="20" cols="40" placeholder="Your next article...">
-                {% if article %}
-                    {{ article.text }}
-                {% endif %}
-            </textarea> -->
-            <input type="text" name="text" id="text" maxlength="20000" value="{% if article %}{{ article.text }}{% endif %}">
+            <label class="question-label" for="text">Text</label>
+            <textarea type="text" name="text" id="text" maxlength="20000" rows="20" cols="40" placeholder="Your next article...">{% if article %}{{ article.text }}{% endif %}</textarea>
+            <!-- <input type="text" name="text" id="text" maxlength="20000" value="{% if article %}{{ article.text }}{% endif %}"> -->
         </div>
 
         <div id="categories-div">

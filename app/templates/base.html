@@ -17,9 +17,12 @@
     <body>
         <header>
             <nav class="navbar">
-                <a class="blogname" href="{{ url_for('general_pages.index') }}" alt="Go to homepage"> 
-                    <h1>Thomas' Blog</h1>
-                </a>    
+                <div>
+                    <a class="blogname" href="{{ url_for('general_pages.index') }}" alt="Go to homepage"> 
+                        <h1>Thomas' Blog</h1>
+                    </a>   
+                </div> 
+                
                 <ul class="menu">
                     <li class="menu-item">
                         <a href="{{ url_for('general_pages.index') }}" alt="Go back to homepage">Home</a>

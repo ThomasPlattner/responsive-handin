@@ -50,12 +50,13 @@ a {
 }
 
 
-/* .menu {
+.menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
-} */
+    padding-inline-start: 0px;
+}
 
 .menu-item a {
     text-decoration: none;
@@ -119,18 +120,6 @@ a {
     justify-content: right;
 }
 
-/* footer .registration-button {
-    color: black;
-    border: black solid 0.75px;
-    border-radius: 20px;
-    margin-left: 10px;
-}
-
-footer .registration-button:hover {
-    background-color: black;
-    color: white;
-} */
-
 .footer p {
     font-size: 1.5vw;
 }
@@ -139,7 +128,7 @@ footer .registration-button:hover {
     - screen size for desktop: >1023px
     - screen size for laptop: 768-1023px
     - screen size for tablet: 576-767px
-    - screen size for mobile: <576px -> no grid applies; posts are displayed vertically in default html format */
+    - screen size for mobile: <576px */
 
 @media screen and (max-width: 576px) {
     header,
@@ -154,6 +143,11 @@ footer .registration-button:hover {
 
     .blogname h1 {
         font-size: 24px;
+    }
+
+    .navbar div {
+        display: flex;
+        justify-content: center;
     }
 
     .hamburger {
@@ -218,7 +212,6 @@ footer .registration-button:hover {
         row-gap: 16px;
         column-count: 1;
     }
-
 } 
 
 
@@ -239,18 +232,20 @@ footer .registration-button:hover {
     .navbar {
         display: block;
         justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar div {
+        display: flex;
+        justify-content: center;
     }
 
     .menu {
         display: flex;
         justify-content: space-between;
         list-style: none;
+        margin: 0 5vw;
     }
-
-    /* .menu-item a{
-        font-size: 20px;
-        padding: 0.5rem 1.25rem;
-    } */
 
     #article-overview {
         display:grid;
@@ -275,7 +270,6 @@ footer .registration-button:hover {
     main {
         margin: 4vw 64px;
     }
-
 
     .menu {
         display: flex;
@@ -312,7 +306,6 @@ footer .registration-button:hover {
     main {
         margin: 4vw 64px;
     }
-
 
     .menu {
         display: flex;

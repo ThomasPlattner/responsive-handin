@@ -87,7 +87,6 @@
     width: 475px;
     font-family: Lato;
     font-size: 16px;
-    text-indent: 50px;
     border-radius: 10px;
     border: solid black 0.3px;
     outline: none;
@@ -95,7 +94,6 @@
 }
 
 #text:focus {
-    text-indent: 0px;
     border: black solid 0.5px;
 }
 
@@ -165,8 +163,8 @@
 #post-article {
     color: white;
     background-color: grey;
-    font-size: 20px;
-    padding: 5px 30px;
+    font-size: 2vw;
+    padding: 0.3rem 1.5rem;
     border-radius: 20px;
     border: none;
 }

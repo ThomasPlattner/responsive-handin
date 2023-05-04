@@ -8,11 +8,6 @@
 
 }
 
-.page-title-section div {
-    display: flex;
-    justify-content: flex-end;
-}
-
 .page-title {
     font-family: Lato;
     font-weight: 400;
@@ -21,15 +16,15 @@
 
 .new-buttons {
     vertical-align: middle;
-    margin-left: 20px;
+    margin-left: 0.5vw;
 }
 
 .new-buttons button {
     border-radius: 20px;
-    padding: 3px 20px;
     color: white;
     background-color: grey;
     border: none;
+    padding: 0.1rem 1rem;
 }
 
 .new-buttons button:hover {
@@ -41,13 +36,22 @@
     text-decoration: none;
 }
 
+.new-buttons button a {
+    font-size: 1.75vw;
+}
+
+
 /* list of articles to edit */
 
 .article-ul {
-    margin-right: 40px;
+    margin-right: 3vw;
 }
 
 .article-manage-li {
+    list-style: none
+}
+
+.article-manage-li div{
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -58,13 +62,12 @@
 #article-manage-title {
     text-decoration: none;
     color: black;
-    margin-left: 20px;
+    margin-left: 3vw;
 }
 
 #article-manage-title p {
-    font-size: 20px;
-    font-weight: 500;
-
+    font-size: 1.75vw;
+    font-weight: 600;
 }
 
 .article-manage-div {
@@ -76,10 +79,10 @@
     background-color: white;
     border: none;
     text-decoration: none;
-    margin: 0 60px 0 10px;
-    padding: 3px 17px;
     border-radius: 30px;
-    font-size: 16px;
+    font-size: 1.5vw;
+    padding: 0.1rem 1rem;
+
 }
 
 .article-manage-button button:hover {
@@ -89,13 +92,28 @@
 
 .lower-new-button {
     text-decoration: none;
-    margin-left: 40px;
+    margin-left: 4vw;
 }
 
 .lower-new-button p {
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 2vw;
     color: grey;
     font-family: Lato;
-    margin: 50px;
 }
+
+@media screen and (max-width: 768px) {
+    .new-buttons button,
+    .article-manage-button button,
+    #article-manage-title p {
+        font-size: 14px;
+    }
+    .new-buttons button,
+    .article-manage-button button,
+    #article-manage-title p {
+        width: auto;
+    }
+    .page-title-section {
+        display: block;
+    }
+}
+

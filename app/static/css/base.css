@@ -1,12 +1,7 @@
 /* General styles */
 
 html {
-    font-size: 20px;
     box-sizing: border-box;
-}
-
-main {
-    margin:5vw 10vw;
 }
 
 /* General Typography */
@@ -16,7 +11,7 @@ h2 {
 }
 
 h3 {
-    font-family: Latp;
+    font-family: Lato;
 }
 
 p, 
@@ -51,7 +46,6 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 10vw;
     padding: 1rem 1.5rem;
 }
 
@@ -63,8 +57,7 @@ a {
     list-style: none;
 } */
 
-.menu-item a,
-.registration-button a {
+.menu-item a {
     text-decoration: none;
     color:black;
     font-size: 1.75vw;
@@ -81,13 +74,17 @@ a {
     background: lightgrey;
 }
 #manage-menu a,
-.registration-button a {
+.registration-button {
+    font-size: 1.75vw;
+    color: black;
     border: black solid 0.5px;
     border-radius: 30px;
+    padding: 0.1rem 0.75rem;
+    text-decoration: none;
 }
 
 #manage-menu a:hover,
-.registration-button a {
+.registration-button:hover {
     background: black;
     color: white;
 }
@@ -114,7 +111,6 @@ a {
     bottom:0vw;
     text-align: right;
     border-top: grey solid 0.5px;
-    margin: 0 10vw;
     padding: 1rem 1.5rem;
 }
 
@@ -123,22 +119,17 @@ a {
     justify-content: right;
 }
 
-.registration-button {
-    /* text-decoration: none;
-    padding: 1px 10px; */
+/* footer .registration-button {
     color: black;
-    /* background-color: transparent;
-    font-size: 14px;
-    line-height: 2;
-    border-radius: 20px; */
     border: black solid 0.75px;
+    border-radius: 20px;
     margin-left: 10px;
 }
 
-.registration-button:hover {
+footer .registration-button:hover {
     background-color: black;
     color: white;
-}
+} */
 
 .footer p {
     font-size: 1.5vw;
@@ -147,10 +138,20 @@ a {
 /* Screen Sizes:
     - screen size for desktop: >1023px
     - screen size for laptop: 768-1023px
-    - screen size for tablet: 481-767px
+    - screen size for tablet: 576-767px
     - screen size for mobile: <576px -> no grid applies; posts are displayed vertically in default html format */
 
 @media screen and (max-width: 576px) {
+    header,
+    footer {
+        margin: 16px;
+    }
+
+    main {
+        margin: 4vw 16px;
+    }
+
+
     .blogname h1 {
         font-size: 24px;
     }
@@ -209,10 +210,28 @@ a {
     .hamburger.active .bar:nth-child(3){
         transform: translateY(-8px) rotate(45deg)
     }
-}  
+
+    #article-overview {
+        display:grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        row-gap: 16px;
+        column-count: 1;
+    }
+
+} 
 
 
 @media screen and (min-width: 577px) and (max-width: 767px) {
+    header,
+    footer {
+        margin: 16px;
+    }
+
+    main {
+        margin: 4vw 16px;
+    }
+
     .blogname h1 {
         font-size: 24px;
     }
@@ -225,7 +244,6 @@ a {
     .menu {
         display: flex;
         justify-content: space-between;
-        align-content: left;
         list-style: none;
     }
 
@@ -238,9 +256,9 @@ a {
         display:grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
-        column-gap: 3%;
-        row-gap: 5%;
-        column-count: 3;
+        column-gap: 16px;
+        row-gap: 16px;
+        column-count: 2;
     }
 
     .hamburger {
@@ -249,10 +267,19 @@ a {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+    header,
+    footer {
+        margin: 8px 64px;
+    }
+
+    main {
+        margin: 4vw 64px;
+    }
+
+
     .menu {
         display: flex;
         justify-content: space-between;
-        align-items: center;
         list-style: none;
     }
 
@@ -261,8 +288,8 @@ a {
         display:grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
-        column-gap: 3%;
-        row-gap: 5%;
+        column-gap: 16px;
+        row-gap: 16px;
         column-count: 3;
     }
 
@@ -277,6 +304,16 @@ a {
 
 
 @media screen and (min-width: 1025px) {
+    header,
+    footer {
+        margin: 8px 64px;
+    }
+
+    main {
+        margin: 4vw 64px;
+    }
+
+
     .menu {
         display: flex;
         justify-content: space-between;
@@ -288,8 +325,8 @@ a {
         display:grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: auto;
-        column-gap: 3%;
-        row-gap: 5%;
+        column-gap: 16px;
+        row-gap: 16px;
         column-count: 3;
     }
 

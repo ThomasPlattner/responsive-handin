@@ -92,19 +92,14 @@
     border-radius: 20px;
     align-items: center;
 }
-
-.registration-button {
-    text-decoration: none;
-    padding: 1px 10px;
-    color: black;
-    background-color: transparent;
-    font-size: 14px;
-    line-height: 2;
-    border-radius: 20px;
-    border: black solid 0.75px;
+.registration-area a {
+    margin-left: 1vw;
 }
-
-.registration-button:hover {
-    background-color: black;
-    color: white;
+.login-div {
+    display: flex;
+    justify-content: center;
 }
+ .login-div input {
+    margin-top: 2vw;
+    padding: 0.1rem 1.25rem;
+ }

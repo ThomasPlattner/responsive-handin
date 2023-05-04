@@ -24,3 +24,7 @@ def blog(slug):
         message = "Sorry, we couldn't find the article about " + slug + " :( "
         return render_template('/base.html', message=message)
     
+@blueprint.route('/run-seed')
+def run_seed():
+    import app.scripts.seed
+    return 'Database seed completed!'

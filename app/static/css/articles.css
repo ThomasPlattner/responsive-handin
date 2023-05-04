@@ -13,7 +13,6 @@
     .blog-article div{
         width: 80vw;
     }
-    
 }
 
 .heading-section {
@@ -28,10 +27,10 @@
 }
 
 #edit-article {
-    font-size: 1.3vw;
+    font-size: 1.75vw;
     color: white;
     background-color: grey;
-    padding: 2px 15px;
+    padding: 0.1rem 1rem;
     border-radius: 20px;
     outline: none;
     text-decoration: none;
@@ -61,9 +60,10 @@
 /* text */
 
 .blog-article .article-text {
-    text-indent: 50px;
+    text-indent: 3rem;
     font-family: Lora;
     font-size: 16px;
+    line-height: 2;
 }
 
 .article-text p::first-line {

@@ -6,45 +6,48 @@
 
 
 {% block main %}
+<div class="category-div">
+    <div>
+        <h2 class="page-title">Manage Categories</h2>
+        <h3 class="sub-title"><strong>Create, edit and delete your category tags:</strong></h3>
 
-    <h2 class="page-title">Manage Categories</h2>
-    <h3 class="sub-title"><strong>Create, edit and delete your category tags:</strong></h3>
+        <ul class="category-list">
+            {% for category in categories %}
+            <li class="category-manage-li">
 
-    <ul class="category-list">
-        {% for category in categories %}
-        <li class="category-manage-li">
+                <form class="category-manage-title" method="POST" action="{{ url_for('manage.post_edit_category', category_id=category.id) }}">
+                    <input class="category-manage-name" type="text" name="edit_categories" id="edit_categories" maxlength="30" value="{{ category.category }}" onfocusout="submitEdit()">
+                </form>
 
-            <form class="category-manage-title" method="POST" action="{{ url_for('manage.post_edit_category', category_id=category.id) }}">
-                <input class="category-manage-name" type="text" name="edit_categories" id="edit_categories" maxlength="30" value="{{ category.category }}" onfocusout="submitEdit()">
-            </form>
+                <form class="category-delete-button" action="{{ url_for('manage.post_delete_category', category_id=category.id) }}" method="POST" onsubmit="return confirm('Are you sure?')" alt="Button for deleting this category">
+                    <button type="submit">🗑️ Delete</button>
+                </form>
 
-            <form class="category-delete-button" action="{{ url_for('manage.post_delete_category', category_id=category.id) }}" method="POST" onsubmit="return confirm('Are you sure?')" alt="Button for deleting this category">
-                <button type="submit">🗑️ Delete</button>
-            </form>
+            </li>
+            
+            <div class="list-line">
+                <p><hr color="lightgrey"></p>
+            </div>      
+    
+            {% endfor %}
+            
+            <br>
+            <li>
 
-        </li>
-        
-        <div class="list-line">
-            <p><hr color="lightgrey"></p>
-        </div>      
- 
-        {% endfor %}
-        
-        <br>
-        <li>
+                <form class="new-category-form" method="POST" action="{{ url_for('manage.post_new_category') }}">
+                    <input id="new-category-name" type="text" name="new_categories" id="new_categories" maxlength="30" placeholder="+ New Category...">
+                    <input id="new-category-save" type="submit" value="Save">
+                </form>
 
-            <form class="new-category-form" method="POST" action="{{ url_for('manage.post_new_category') }}">
-                <input id="new-category-name" type="text" name="new_categories" id="new_categories" maxlength="30" placeholder="+ New Category...">
-                <input id="new-category-save" type="submit" value="Save">
-            </form>
-
-        </li>
-    </ul>
+            </li>
+        </ul>
 
 
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+</div>
 
     <script>
         const categoryForms = document.querySelectorAll(".category-manage-title");
@@ -56,5 +59,4 @@
             });
         });
     </script>
-
 {% endblock %}

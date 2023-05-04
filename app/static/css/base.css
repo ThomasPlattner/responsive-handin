@@ -74,6 +74,7 @@ a {
 .menu-item a:hover {
     background: lightgrey;
 }
+
 #manage-menu a,
 .registration-button {
     font-size: 1.75vw;
@@ -187,7 +188,8 @@ a {
     }
 
     .menu-item a,
-    .registration-button a {
+    .registration-button a,
+    #manage-menu a {
         font-size: 14px;
         font-weight: 300;
         padding: 0.5rem 1rem;
@@ -218,11 +220,11 @@ a {
 @media screen and (min-width: 577px) and (max-width: 767px) {
     header,
     footer {
-        margin: 16px;
+        margin: 64px;
     }
 
     main {
-        margin: 4vw 16px;
+        margin: 4vw 64px;
     }
 
     .blogname h1 {

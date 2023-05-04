@@ -8,37 +8,25 @@
 
 {% block main %}
     <article class="blog-article">
+        <div>
 
-        {% if current_user.is_authenticated %}
-            <a id="edit-article" href="{{ url_for('manage.get_edit_article', article_id=article.id) }}" alt="button leading to editor form for this article">
-                    🖍️ Edit Article
-            </a>
-        {% endif %}
+            {% if current_user.is_authenticated %}
+                <a id="edit-article" href="{{ url_for('manage.get_edit_article', article_id=article.id) }}" alt="button leading to editor form for this article">
+                        🖍️ Edit Article
+                </a>
+            {% endif %}
 
-        <div class="heading-section">
-            <h2 class="article-title">{{ title }}</h2>
-            <button class="darkmode" onclick="darkmode()">
-                <span class="make-dark">🌚</span>
-            </button>
+            <div class="heading-section">
+                <h2 class="article-title">{{ title }}</h2>
+            </div>
+
+            <div class="article-categories">
+                {% for category in categories %}
+                <div class="category-tag">{{ category }}</div>
+                {% endfor %}
+            </div>
+
+            <p class="article-text">{{ text }}</p>
         </div>
-
-        <div class="article-categories">
-            {% for category in categories %}
-            <div class="category-tag">{{ category }}</div>
-            {% endfor %}
-        </div>
-
-        <p class="article-text">{{ text }}</p>
     </article>
-
-    <script>
-        // Darkmode - only for reading articles
-        function darkmode() {
-            const elements = document.querySelectorAll('header, body, nav, main, footer');
-
-            elements.forEach((element) => {
-                element.classList.toggle("dark")
-            })
-        }
-    </script>
 {% endblock %}

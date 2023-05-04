@@ -1,11 +1,19 @@
 /* Article formatting */
 
 .blog-article {
-    width: 475px;
-    padding: 0 20vw;
-    align-items: center;
-    line-height: 2;
+    display: flex;
+    justify-content: center;
+}
 
+.blog-article div{
+    width: 475px;
+}
+
+@media screen and (max-width: 576px) {
+    .blog-article div{
+        width: 80vw;
+    }
+    
 }
 
 .heading-section {
@@ -14,11 +22,13 @@
 }
 
 .article-title {
-    font-size: 50;
+    font-size: 3vw;
+    font-weight: 500;
+    font-family: Lora;
 }
 
 #edit-article {
-    font-size: 16px;
+    font-size: 1.3vw;
     color: white;
     background-color: grey;
     padding: 2px 15px;
@@ -43,7 +53,7 @@
     background-color: none;
     border-radius: 10px;
     width: auto;
-    font-size: 16px;
+    font-size: 0.7vw;
     margin: 0 5px;
     padding: 0 10px;
 }
@@ -52,33 +62,10 @@
 
 .blog-article .article-text {
     text-indent: 50px;
-    font-family: Lato;
+    font-family: Lora;
     font-size: 16px;
 }
 
 .article-text p::first-line {
     line-height: 3;
-}
-
-/* Darkmode */
-
-.darkmode {
-    border-radius: 30px;
-    margin-left: 40px;
-    outline: none;
-    background-color: transparent;
-    border: none;
-    font-size: 14px;
-}
-
-.darkmode:hover {
-    font-size: 20px;
-}
-
-/* Darkmode */
-
-.dark {
-    background-color: #121212;
-    color: white;
-    border: white;
 }

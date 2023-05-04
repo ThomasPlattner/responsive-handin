@@ -17,10 +17,6 @@ def about():
 def about_me():
     return redirect(url_for('about'))
 
-@blueprint.route('/categories')
-def categories():
-    return render_template('general_pages/categories.html')
-
 @blueprint.route('/contact')
 def contact():
     return render_template('general_pages/contact.html')

@@ -1,10 +1,9 @@
 /* General main section formatting */
 
 .page-title {
-    font-family: Montserrat;
-    font-weight: 400;
-    font-size: 24px;
-    margin-left: 40px;
+    font-family: Lato;
+    font-weight: 600;
+    font-size: 2vw;
 }
 
 /* Article Overview Formatting */
@@ -24,12 +23,13 @@
 
 #article-overview a {
     text-decoration: none;
-    color: black;
 }
 
 .post-description {
-    font-size: 1vw;
-    text-indent: 5%;
+    font-size: 2vw;
+    text-align: center;
+    color: black;
+    margin: 0.5rem 0;
 }
 
 /* pagination */
@@ -77,15 +77,20 @@
 }
 
 .registration-field {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 35vw;
+    justify-content: center;
+    margin-bottom: 1vw;
+    font-family: Lato;
+    font-size: 2vw;
 }
 
 .registration-field input {
-    margin-right: 100px;
+    margin-left: 5vw;
     border: black solid 0.5px;
     border-radius: 20px;
+    align-items: center;
 }
 
 .registration-button {
@@ -97,7 +102,6 @@
     line-height: 2;
     border-radius: 20px;
     border: black solid 0.75px;
-    margin-left: 10px;
 }
 
 .registration-button:hover {

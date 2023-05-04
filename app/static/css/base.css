@@ -12,23 +12,22 @@ main {
 /* General Typography */
 
 h2 {
-    font-family: Montserrat;
+    font-family: Lato;
 }
 
 h3 {
-    font-family: Montserrat;
+    font-family: Latp;
 }
 
 p, 
 li, 
 a {
     font-family: Lato;
-    font-size: 16px;
 }
 
 .page-title {
-    font-family: Montserrat;
-    font-weight: 400;
+    font-family: Lato;
+    font-weight: 300;
     font-size: 24px;
 }
 
@@ -39,17 +38,16 @@ a {
     color: black;
 }
 
-h1 { 
-    font-family: Montserrat;     
-    font-weight: 500;
-    font-style: italic;
+.blogname h1 { 
+    font-family: Lato;     
+    font-weight: 300;
     text-decoration: none;
-    margin-left: 0.5em;
+    font-size: 3vw;
 }
     
 .navbar {
-    font-family: Montserrat;
-    border-bottom: grey solid 2px;
+    font-family: Lato;
+    border-bottom: grey solid 0.5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,36 +55,24 @@ h1 {
     padding: 1rem 1.5rem;
 }
 
-/* .navbar {
-    font-family: Montserrat;
-    border-bottom: solid grey 2px;
-    display:flex;
-    gap:0.625%;
-    align-items:stretch;
-    margin: 0 10vw;
-} */
 
-.menu {
+/* .menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
-}
+} */
 
-.menu-item {
-    display: inline;
-}
-
-.menu-item a{
+.menu-item a,
+.registration-button a {
     text-decoration: none;
     color:black;
-    font-size: 14px;
-    font-weight: 200;
-    font-family: Montserrat;
+    font-size: 1.75vw;
+    font-weight: 300;
+    font-family: Lato;
     border-radius: 30px;
-    width: 5%;
-    padding:  0.5vw 1vw;
-    margin: 1rem;
+    padding:  0.1rem 0.75rem;
+    margin: 0.7rem;
     flex:auto;
     text-align: center;
 }
@@ -94,28 +80,17 @@ h1 {
 .menu-item a:hover {
     background: lightgrey;
 }
-
-.manage-menu a {
-    font-weight: 200;
-    font-family: Montserrat;
-    font-size: 14px;
-    text-decoration: none;
-    color: black;
-    background-color: transparent;
+#manage-menu a,
+.registration-button a {
     border: black solid 0.5px;
     border-radius: 30px;
-    padding:  0.5vw 1vw;
-    margin: 1rem;
-    flex:auto;
-    text-align: center;
-
 }
 
-.manage-menu a:hover {
+#manage-menu a:hover,
+.registration-button a {
     background: black;
     color: white;
 }
-
 
 .hamburger {
     display: none;
@@ -138,7 +113,7 @@ h1 {
     position: relative;
     bottom:0vw;
     text-align: right;
-    border-top: grey solid 2px;
+    border-top: grey solid 0.5px;
     margin: 0 10vw;
     padding: 1rem 1.5rem;
 }
@@ -149,13 +124,13 @@ h1 {
 }
 
 .registration-button {
-    text-decoration: none;
-    padding: 1px 10px;
+    /* text-decoration: none;
+    padding: 1px 10px; */
     color: black;
-    background-color: transparent;
+    /* background-color: transparent;
     font-size: 14px;
     line-height: 2;
-    border-radius: 20px;
+    border-radius: 20px; */
     border: black solid 0.75px;
     margin-left: 10px;
 }
@@ -166,15 +141,20 @@ h1 {
 }
 
 .footer p {
-    font-size: 14px;
+    font-size: 1.5vw;
 }
 
 /* Screen Sizes:
-    - default screen width for desktop: >992px
-    - screen size for tablet: 576-992px
+    - screen size for desktop: >1023px
+    - screen size for laptop: 768-1023px
+    - screen size for tablet: 481-767px
     - screen size for mobile: <576px -> no grid applies; posts are displayed vertically in default html format */
 
 @media screen and (max-width: 576px) {
+    .blogname h1 {
+        font-size: 24px;
+    }
+
     .hamburger {
         display: block;
         background-color: transparent;
@@ -189,6 +169,7 @@ h1 {
 
     .menu {
         position: fixed;
+        list-style: none;
         left: -500%;
         top: 5rem;
         flex-direction: column;
@@ -205,8 +186,16 @@ h1 {
         left: 0;
     }
 
-    .menu-item {
-        margin: 2.5rem 0;
+    .menu-item,
+    .registration-button {
+        margin: 1rem 0;
+    }
+
+    .menu-item a,
+    .registration-button a {
+        font-size: 14px;
+        font-weight: 300;
+        padding: 0.5rem 1rem;
     }
 
     .hamburger.active .bar:nth-child(2){
@@ -223,7 +212,51 @@ h1 {
 }  
 
 
-@media screen and (min-width: 576px) and (max-width: 992px) {
+@media screen and (min-width: 577px) and (max-width: 767px) {
+    .blogname h1 {
+        font-size: 24px;
+    }
+    
+    .navbar {
+        display: block;
+        justify-content: space-between;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        align-content: left;
+        list-style: none;
+    }
+
+    /* .menu-item a{
+        font-size: 20px;
+        padding: 0.5rem 1.25rem;
+    } */
+
+    #article-overview {
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        column-gap: 3%;
+        row-gap: 5%;
+        column-count: 3;
+    }
+
+    .hamburger {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+    }
+
+    
     #article-overview {
         display:grid;
         grid-template-columns: 1fr 1fr;
@@ -237,12 +270,20 @@ h1 {
         text-align: center;
      }
 
-    .hamburger {
+     .hamburger {
         display: none;
     }
 }
 
-@media screen and (min-width: 992px) {
+
+@media screen and (min-width: 1025px) {
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+    }
+
     #article-overview {
         display:grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -252,13 +293,4 @@ h1 {
         column-count: 3;
     }
 
-    h1 {
-        text-align: center;
-     }
-
-     .hamburger {
-        display: none;
-    }
-
 }
-
